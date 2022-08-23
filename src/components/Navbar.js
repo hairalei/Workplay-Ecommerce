@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaShoppingCart } from 'react-icons/fa';
 import { IoPersonAdd, IoCart } from 'react-icons/io5';
@@ -14,24 +14,24 @@ function Navbar() {
       </div>
 
       <div className='linksDiv'>
-        <Link to='/' className='navlink'>
+        <NavLink to='/' className='navlink'>
           Home
-        </Link>
-        <Link to='/products' className='navlink'>
+        </NavLink>
+        <NavLink to='/products' className='navlink'>
           Products
-        </Link>
-        <Link to='/about' className='navlink'>
+        </NavLink>
+        <NavLink to='/about' className='navlink'>
           About
-        </Link>
+        </NavLink>
       </div>
 
       <div className='cartAndAuthDiv'>
-        <Link to='/cart'>
+        <NavLink to='/cart'>
           <IoCart className='icon' />
-        </Link>
-        <Link to='/login'>
+        </NavLink>
+        <NavLink to='/login'>
           <IoPersonAdd className='icon' />
-        </Link>
+        </NavLink>
       </div>
     </Wrapper>
   );
@@ -43,7 +43,7 @@ const Wrapper = styled.nav`
   justify-content: space-around;
   width: 100%;
 
-  background-color: var(--primary-light);
+  background-color: var(--blue);
 
   .logoDiv {
     display: flex;

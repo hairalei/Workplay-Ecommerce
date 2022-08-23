@@ -7,6 +7,8 @@
   --primary: #4fa9bc;
   --primary-light: #88ced8;
   --primary-dark: #0e0034;
+  --blue: #6cc4d8;
+  --active: #e6f4f1;
 }
 
 * {
@@ -33,4 +35,8 @@ body {
 
   background-color: var(--bg-color);
   color: var(--black);
+}
+
+.active {
+  color: var(--active);
 }
