@@ -72,6 +72,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
+}
+
+*:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  border: 3px dotted var(--primary-light);
 }
 
 html {
