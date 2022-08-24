@@ -42,8 +42,10 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  z-index: 9999;
+  box-shadow: 0 10px 20px var(--shadow);
 
-  background-color: var(--blue);
+  background-color: var(--purple-3);
 
   .logoDiv {
     display: flex;
