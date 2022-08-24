@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Hero, Features, FeatureProducts } from '../components';
+import {
+  Hero,
+  Features,
+  FeatureProducts,
+  ProductsSelection,
+} from '../components';
 
 function Home() {
   return (
@@ -8,6 +13,7 @@ function Home() {
       <Hero />
       <Features />
       <FeatureProducts />
+      <ProductsSelection />
     </Wrapper>
   );
 }
