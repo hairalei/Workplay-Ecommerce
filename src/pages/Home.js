@@ -1,12 +1,21 @@
 import React from 'react';
-import { Hero } from '../components';
+import styled from 'styled-components';
+import { Hero, Features } from '../components';
 
 function Home() {
   return (
-    <div>
+    <Wrapper>
       <Hero />
-    </div>
+      <Features />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default Home;

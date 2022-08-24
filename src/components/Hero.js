@@ -37,7 +37,9 @@ function Hero() {
 }
 
 const Wrapper = styled.section`
+  height: 100vh;
   max-height: 100vh;
+  width: 100%;
 
   .overlay {
     content: '';
@@ -73,27 +75,27 @@ const Wrapper = styled.section`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
 
-  .textDiv h1 {
-    font-family: 'Orbitron';
-    font-weight: 900;
-    font-size: 4.2rem;
-    text-align: center;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--white);
-    margin-bottom: 2rem;
-    width: 100%;
-  }
+    h1 {
+      font-family: 'Orbitron';
+      font-weight: 900;
+      font-size: 4.2rem;
+      text-align: center;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 2rem;
+      width: 100%;
+    }
 
-  .textDiv p {
-    font-weight: 400;
-    font-size: 1.8rem;
-    line-height: 2.8rem;
-    text-align: center;
-    color: var(--grey-5);
-    margin-bottom: 3.2rem;
+    p {
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.8rem;
+      text-align: center;
+      color: var(--grey-5);
+      margin-bottom: 3.2rem;
+    }
   }
 
   .btn-shop {
@@ -109,18 +111,18 @@ const Wrapper = styled.section`
     font-weight: 500;
     position: relative;
     overflow: hidden;
-  }
 
-  .btn-shop:before {
-    content: '';
-    background-color: var(--white);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2rem;
-    transform: translateX(-100%) rotate(45deg);
-    animation: btnAnimation 1.7s infinite;
+    &:before {
+      content: '';
+      background-color: var(--white);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2rem;
+      transform: translateX(-100%) rotate(45deg);
+      animation: btnAnimation 1.7s infinite;
+    }
   }
 `;
 
