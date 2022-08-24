@@ -6,6 +6,7 @@ import {
   FeatureProducts,
   ProductsSelection,
   Newsletter,
+  Footer,
 } from '../components';
 
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
       <FeatureProducts />
       <ProductsSelection />
       <Newsletter />
+      <Footer />
     </Wrapper>
   );
 }

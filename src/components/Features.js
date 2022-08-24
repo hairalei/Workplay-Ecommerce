@@ -56,6 +56,8 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: center;
   gap: 6rem;
+  background-color: var(--white);
+  border-radius: 1rem;
 
   .featureDiv {
     max-width: 28rem;
