@@ -17,7 +17,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (window.innerWidth <= 700) setShowSidebar(true);
+    if (window.innerWidth <= 900) setShowSidebar(true);
     window.addEventListener('scroll', stickNavbar);
 
     return () => {
@@ -29,7 +29,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        {showSidebar && <Sidebar />}
+        {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
 
         <Routes>
           <Route path='/' element={<Home />} />

@@ -14,7 +14,7 @@ function Navbar() {
         <span>Workplay</span>
       </div>
 
-      {window.innerWidth > 700 && (
+      {window.innerWidth > 900 && (
         <>
           <div className='linksDiv'>
             {navLinks.map((link, idx) => {
@@ -94,7 +94,7 @@ const Wrapper = styled.nav`
     margin-right: 1.8rem;
   }
 
-  @media (max-width: 1000px) and (min-width: 700px) {
+  /* @media (max-width: 1000px) and (min-width: 700px) {
     .logoDiv span {
       display: none;
     }
@@ -103,7 +103,7 @@ const Wrapper = styled.nav`
       width: 6.4rem;
       height: 6.4rem;
     }
-  }
+  } */
 
   @media (max-width: 1000px) {
     padding: 1rem 0;
@@ -119,20 +119,10 @@ const Wrapper = styled.nav`
     }
   }
 
-  /* @media (max-width: 700) {
-    padding: 0.25rem 0;
-    background-color: red;
-
-    .logoDiv span {
-      font-size: 2.4rem;
-    }
-
-    .logoDiv img {
-      width: 4.8rem;
-      height: 4.8rem;
-      margin-right: 0.8rem;
-    }
-  } */
+  @media (max-width: 600px) {
+    justify-content: start;
+    padding-left: 1rem;
+  }
 `;
 
 export default Navbar;

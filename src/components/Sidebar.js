@@ -5,7 +5,7 @@ import { IoPersonAdd, IoCart, IoClose } from 'react-icons/io5';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
 
-function Sidebar() {
+function Sidebar({ scrollHeight }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ function Sidebar() {
       {!isSidebarOpen && (
         <button
           type='button'
-          className='navCircle'
+          className={scrollHeight > 20 ? 'navCircle shadow' : 'navCircle'}
           onClick={() => setIsSidebarOpen(true)}
         >
           <div className='line'></div>
@@ -78,6 +78,10 @@ const Wrapper = styled.aside`
     }
   }
 
+  .shadow {
+    box-shadow: 0 1rem 1rem var(--shadow);
+  }
+
   .show {
     transform: translateX(0%);
 
@@ -96,7 +100,7 @@ const Wrapper = styled.aside`
     border-radius: 50%;
     background-color: var(--purple-3);
     cursor: pointer;
-    box-shadow: 0 1rem 1rem var(--shadow);
+    /* box-shadow: 0 1rem 1rem var(--shadow); */
     z-index: 9999;
 
     &:hover {
@@ -201,6 +205,39 @@ const Wrapper = styled.aside`
     font-size: 3.2rem;
     margin-right: 1rem;
     margin-bottom: -0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .navCircle {
+      top: 0.7rem;
+      right: 1rem;
+      width: 6rem;
+      height: 6rem;
+
+      .line {
+        height: 0.3rem;
+      }
+
+      .line::before {
+        top: -300%;
+        left: 0%;
+        width: 4rem;
+        height: 0.5rem;
+      }
+
+      .line::after {
+        bottom: -300%;
+        left: 0%;
+        width: 4rem;
+        height: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .sidebar {
+      width: 100vw;
+    }
   }
 `;
 

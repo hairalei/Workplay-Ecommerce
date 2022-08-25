@@ -164,7 +164,7 @@ const Wrapper = styled.section`
 
   @media (max-width: 440px) {
     .textDiv {
-      padding: 0 1rem;
+      padding: 0 1.4rem;
       position: absolute;
       top: 50%;
       left: 0%;
