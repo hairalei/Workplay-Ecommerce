@@ -23,7 +23,10 @@ function Hero() {
       </div>
 
       <div className='textDiv'>
-        <h1>WORK HARD, PLAY HARD</h1>
+        <h1>
+          WORK HARD,
+          <br /> PLAY HARD
+        </h1>
         <p>
           Your go to multimedia store where your gaming and gadget needs are
           fulfilled.
@@ -70,6 +73,7 @@ const Wrapper = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
     position: absolute;
     top: 50%;
@@ -95,6 +99,7 @@ const Wrapper = styled.section`
       text-align: center;
       color: var(--grey-5);
       margin-bottom: 3.2rem;
+      max-width: 40rem;
     }
   }
 
@@ -122,6 +127,67 @@ const Wrapper = styled.section`
       height: 2rem;
       transform: translateX(-100%) rotate(45deg);
       animation: btnAnimation 1.7s infinite;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .textDiv {
+      padding: 0 1rem;
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(0%, -50%);
+    }
+
+    .textDiv h1 {
+      font-size: 3.6rem;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .textDiv h1 {
+      font-size: 2.4rem;
+    }
+
+    .textDiv p {
+      font-size: 1.6rem;
+    }
+
+    .btn-shop {
+      width: 20rem;
+      text-align: center;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .textDiv {
+      padding: 0 1rem;
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(0%, -50%);
+    }
+
+    .textDiv h1,
+    .textDiv p {
+      text-align: left;
+    }
+
+    .textDiv p {
+      line-height: 1.3;
+    }
+
+    .btn-shop {
+      width: fit-content;
+      text-align: left;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      font-size: 1.6rem;
+      justify-self: start;
+      align-self: flex-start;
     }
   }
 `;
