@@ -5,6 +5,7 @@ import Hero from './Hero';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
 import ProductsSelection from './ProductsSelection';
+import Sidebar from './Sidebar';
 
 export {
   Features,
@@ -14,4 +15,5 @@ export {
   Navbar,
   Newsletter,
   ProductsSelection,
+  Sidebar,
 };

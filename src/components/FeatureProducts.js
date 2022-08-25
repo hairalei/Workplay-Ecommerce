@@ -45,6 +45,7 @@ const Wrapper = styled.section`
   height: 100vh;
   margin: 4.8rem 0;
   margin-top: 7.2rem;
+  z-index: 0;
 
   h2 {
     padding-left: 12rem;

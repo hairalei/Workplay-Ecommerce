@@ -11,10 +11,11 @@ function ProductsSelection() {
     <Wrapper>
       <h2>Products Selection</h2>
       <div className='imagesDiv'>
-        {productsImages.map((image) => {
+        {productsImages.map((image, idx) => {
           const { name, url } = image;
           return (
             <div
+              key={idx}
               className={isHover ? 'imageBox show' : 'imageBox'}
               ref={textRef}
               onMouseEnter={() => setIsHover(true)}
