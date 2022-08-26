@@ -95,14 +95,41 @@ const Wrapper = styled.section`
   }
 
   img {
-    height: 30rem;
-    width: 30rem;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     transition: transform 1.5s linear;
   }
 
   .imageBox:hover img {
     transform: scale(1.3);
+  }
+
+  @media (max-width: 700px) {
+    h2 {
+      padding: 0 5rem;
+      font-size: 2.8rem;
+
+      &:after {
+        left: 5rem;
+      }
+    }
+
+    .imageBox {
+      height: 20rem;
+      width: 20rem;
+    }
+  }
+
+  @media (max-width: 350px) {
+    h2 {
+      padding: 0 2rem;
+      font-size: 2.4rem;
+
+      &:after {
+        left: 2rem;
+      }
+    }
   }
 `;
 

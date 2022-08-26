@@ -64,6 +64,28 @@ const Wrapper = styled.section`
     background-color: var(--primary);
   }
 
+  @media (max-width: 700px) {
+    h2 {
+      padding: 0 5rem;
+      font-size: 2.8rem;
+
+      &:after {
+        left: 5rem;
+      }
+    }
+  }
+
+  @media (max-width: 350px) {
+    h2 {
+      padding: 0 2rem;
+      font-size: 2.4rem;
+
+      &:after {
+        left: 2rem;
+      }
+    }
+  }
+
   h1 {
     font-size: 4.8rem;
     color: #fff;
