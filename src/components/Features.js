@@ -79,6 +79,19 @@ const Wrapper = styled.section`
       line-height: 1.5;
     }
   }
+
+  @media (max-width: 1100px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: 950px) {
+    flex-wrap: wrap;
+    row-gap: 5rem;
+  }
+
+  @media (max-width: 400px) {
+    padding: 7rem 1rem;
+  }
 `;
 
 export default Features;
