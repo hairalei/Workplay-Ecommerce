@@ -93,6 +93,50 @@ const Wrapper = styled.section`
     color: var(--grey-5);
     font-size: 1.4rem;
   }
+
+  @media (max-width: 1200px) {
+    padding: 5rem 5rem;
+    padding-bottom: 1rem;
+
+    .container {
+      gap: 8rem;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    padding: 5rem 5rem;
+    padding-bottom: 1rem;
+
+    .container {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      gap: 6rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 630px) {
+    .container {
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      column-gap: 8rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 450px) {
+    padding: 5rem 1rem;
+
+    .container {
+      display: flex;
+      align-items: start;
+      justify-content: start;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+  }
 `;
 
 export default Footer;

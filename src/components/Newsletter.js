@@ -84,6 +84,52 @@ const Wrapper = styled.section`
       background-color: var(--yellow-1);
     }
   }
+
+  @media (max-width: 1150px) {
+    padding: 6.4rem 4rem;
+    justify-content: normal;
+    gap: 3rem;
+
+    .textDiv {
+      max-width: 40rem;
+    }
+
+    form input {
+      width: 40rem;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    gap: 3rem;
+
+    .textDiv {
+      max-width: 60rem;
+    }
+  }
+
+  @media (max-width: 630px) {
+    align-items: normal;
+    justify-content: normal;
+    width: 100%;
+    padding: 6.4rem 1rem;
+
+    form input {
+      width: 100%;
+      height: 4.8rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+
+    form button {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      font-size: 1.6rem;
+      width: 100%;
+      height: 3.6rem;
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export default Newsletter;
