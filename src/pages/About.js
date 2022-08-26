@@ -64,6 +64,35 @@ const Wrapper = styled.main`
     max-width: 60rem;
     line-height: 1.8;
   }
+
+  @media (max-width: 850px) {
+    gap: 4rem;
+  }
+
+  @media (max-width: 700px) {
+    gap: 3rem;
+    flex-direction: column;
+    padding: 2rem;
+    padding-bottom: 5rem;
+
+    .imgDiv {
+      width: 100vw;
+      max-height: 50vh;
+
+      & img {
+        object-position: 40% 20%;
+      }
+    }
+
+    h1 {
+      font-size: 3.2rem;
+    }
+
+    p {
+      word-wrap: break-word;
+      line-height: 1.6;
+    }
+  }
 `;
 
 export default About;
