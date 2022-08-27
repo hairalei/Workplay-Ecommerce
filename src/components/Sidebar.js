@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { IoPersonAdd, IoCart, IoClose } from 'react-icons/io5';
-import logo from '../assets/workplaylogo.svg';
+import { IoClose } from 'react-icons/io5';
 import { navLinks } from '../utils/navLinks';
 
 function Sidebar({ scrollHeight }) {
@@ -31,17 +30,6 @@ function Sidebar({ scrollHeight }) {
               </NavLink>
             );
           })}
-
-          <div className='cartAndAuthDiv'>
-            <NavLink className='links' to='/cart'>
-              <IoCart className='icon' />
-              <span className='linkName'>Cart</span>
-            </NavLink>
-            <NavLink className='links' to='/login'>
-              <IoPersonAdd className='icon' />
-              <span className='linkName'>LogIn</span>
-            </NavLink>
-          </div>
         </div>
       </div>
     </Wrapper>

@@ -128,6 +128,14 @@ const Wrapper = styled.section`
       transform: translateX(-100%) rotate(45deg);
       animation: btnAnimation 1.7s infinite;
     }
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
   }
 
   @media (max-width: 760px) {

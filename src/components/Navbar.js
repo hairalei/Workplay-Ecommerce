@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IoPersonAdd, IoCart } from 'react-icons/io5';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
-import Sidebar from './Sidebar';
 
 function Navbar() {
   return (
     <Wrapper>
-      <div className='logoDiv'>
+      <Link to='/' className='logoDiv'>
         <img src={logo} alt='workplay logo' />
         <span>Workplay</span>
-      </div>
+      </Link>
 
       {window.innerWidth > 900 && (
         <>
@@ -20,19 +18,12 @@ function Navbar() {
             {navLinks.map((link, idx) => {
               return (
                 <NavLink key={idx} to={link.path} className='navlink'>
-                  {link.name}
+                  <span className='linkName'>
+                    {link.name === 'cart' ? link.icon : link.name}
+                  </span>
                 </NavLink>
               );
             })}
-          </div>
-
-          <div className='cartAndAuthDiv'>
-            <NavLink to='/cart'>
-              <IoCart className='icon' />
-            </NavLink>
-            <NavLink to='/login'>
-              <IoPersonAdd className='icon' />
-            </NavLink>
           </div>
         </>
       )}
@@ -63,7 +54,6 @@ const Wrapper = styled.nav`
     font-weight: 900;
     font-size: 4.8rem;
     text-transform: uppercase;
-    /* color: var(--primary-dark); */
   }
 
   .logoDiv img {
@@ -72,6 +62,9 @@ const Wrapper = styled.nav`
   }
 
   .linksDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navlink {
@@ -86,26 +79,32 @@ const Wrapper = styled.nav`
     margin-right: 0;
   }
 
-  .cartAndAuthDiv .icon {
+  .navlink:nth-of-type(4) {
     font-size: 3.2rem;
+    margin-left: 8rem;
   }
 
-  .cartAndAuthDiv .icon:first-of-type {
-    margin-right: 1.8rem;
+  .linkName {
+    text-transform: uppercase;
+    position: relative;
   }
 
-  /* @media (max-width: 1000px) and (min-width: 700px) {
-    .logoDiv span {
-      display: none;
-    }
+  .linkName::after {
+    content: '';
+    position: absolute;
+    bottom: -0.3rem;
+    left: 0;
+    background-color: var(--active);
+    width: 0%;
+    height: 0.3rem;
+    transition: all 0.4s ease-in;
+  }
 
-    .logoDiv img {
-      width: 6.4rem;
-      height: 6.4rem;
-    }
-  } */
+  .linkName:hover::after {
+    width: 100%;
+  }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1100px) {
     padding: 1rem 0;
 
     .logoDiv span {
@@ -116,6 +115,11 @@ const Wrapper = styled.nav`
       width: 4.8rem;
       height: 4.8rem;
       margin-right: 0.8rem;
+    }
+
+    .navlink:nth-of-type(4) {
+      font-size: 3.2rem;
+      margin-left: 3rem;
     }
   }
 
