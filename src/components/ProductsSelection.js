@@ -14,18 +14,18 @@ function ProductsSelection() {
         {productsImages.map((image, idx) => {
           const { name, url } = image;
           return (
-            <div
-              key={idx}
-              className={isHover ? 'imageBox show' : 'imageBox'}
-              ref={textRef}
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
-            >
-              <img src={url} alt={name} />
-              <Link to='/products'>
+            <Link to='/products'>
+              <div
+                key={idx}
+                className={isHover ? 'imageBox show' : 'imageBox'}
+                ref={textRef}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+              >
+                <img src={url} alt={name} />
                 <span>{name}</span>
-              </Link>
-            </div>
+              </div>
+            </Link>
           );
         })}
       </div>
