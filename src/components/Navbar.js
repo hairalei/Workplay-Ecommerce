@@ -36,7 +36,7 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
   box-shadow: 0 8px 15px var(--shadow);
 
   background-color: var(--blue-shade-3);
