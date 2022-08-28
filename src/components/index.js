@@ -3,6 +3,7 @@ import FeatureProducts from './FeatureProducts';
 import Footer from './Footer';
 import Form from './Form';
 import Hero from './Hero';
+import Loading from './Loading';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
 import ProductsSelection from './ProductsSelection';
@@ -14,6 +15,7 @@ export {
   Footer,
   Form,
   Hero,
+  Loading,
   Navbar,
   Newsletter,
   ProductsSelection,

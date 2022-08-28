@@ -44,7 +44,7 @@ const Wrapper = styled.section`
   width: 100vw;
   height: 100vh;
   margin: 4.8rem 0;
-  margin-top: 7.2rem;
+  margin-top: 0;
   z-index: 0;
 
   h2 {

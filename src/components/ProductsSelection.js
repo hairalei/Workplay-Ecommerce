@@ -14,9 +14,8 @@ function ProductsSelection() {
         {productsImages.map((image, idx) => {
           const { name, url } = image;
           return (
-            <Link to='/products'>
+            <Link to='/products' key={idx}>
               <div
-                key={idx}
                 className={isHover ? 'imageBox show' : 'imageBox'}
                 ref={textRef}
                 onMouseEnter={() => setIsHover(true)}
@@ -39,7 +38,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20rem 0;
+  margin: 20rem 0;
 
   h2 {
     font-size: 3.6rem;

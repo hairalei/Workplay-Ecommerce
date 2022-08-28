@@ -6,14 +6,14 @@ import { heroImages } from '../utils/imagesData';
 function Hero() {
   const [index, setIndex] = useState(0);
 
-  // useEffect(() => {
-  //   const int = setInterval(() => {
-  //     setIndex((prev) => prev + 1);
-  //     if (index === 3) setIndex(0);
+  useEffect(() => {
+    const int = setInterval(() => {
+      setIndex((prev) => prev + 1);
+      if (index === 3) setIndex(0);
+    }, 3000);
 
-  //     clearInterval(int);
-  //   }, 3000);
-  // }, [index]);
+    return () => clearInterval(int);
+  }, [index]);
 
   return (
     <Wrapper>
@@ -51,7 +51,7 @@ const Wrapper = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: -9;
     margin-top: 5rem;
   }

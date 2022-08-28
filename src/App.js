@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { About, Cart, Checkout, Home, LogIn, Products, SignUp } from './pages';
 import { Navbar, Sidebar } from './components';
+import { UserProvider } from './context/userContext';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -27,21 +28,23 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
+      <UserProvider>
+        <BrowserRouter>
+          <Navbar value={'5'} color='red' />
+          {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
 
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/products' element={<Products />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout />} />
 
-          <Route path='/login' element={<LogIn />} />
-          <Route path='/signup' element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path='/login' element={<LogIn />} />
+            <Route path='/signup' element={<SignUp />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </>
   );
 }

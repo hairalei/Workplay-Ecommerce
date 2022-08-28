@@ -1,34 +1,133 @@
-import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { auth, db } from '../firebase/firebase.config';
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import Loading from './Loading';
 
 function Form() {
   const title = useLocation().pathname.slice(1);
+  const navigate = useNavigate('/');
 
-  const handleOnChange = () => {};
+  const [formData, setFormData] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+  });
+  const { fullname, email, password } = formData;
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleOnChange = (e) => {
+    setFormData((prev) => {
+      return { ...prev, [e.target.id]: e.target.value };
+    });
+  };
+
+  const handleSignup = async (e) => {
     e.preventDefault();
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      updateProfile(auth.currentUser, {
+        displayName: fullname,
+      });
+
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
+
+      setIsLoading(false);
+      navigate('/');
+    } catch (error) {
+      setIsLoading(false);
+      setError('Sorry, we could not find your account.');
+    }
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError(null);
+    setIsLoading(true);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate('/');
+      }
+
+      setIsLoading(false);
+      navigate('/');
+    } catch (error) {
+      setIsLoading(false);
+      setError('Incorrect email/password. Try again.');
+    }
   };
 
   return (
     <Wrapper>
+      {isLoading && <Loading />}
       <div className='container'>
         <h1 className='heading'>{title}</h1>
-        <form className='form' onSubmit={handleSubmit}>
+        <form
+          className='form'
+          onSubmit={title === 'signup' ? handleSignup : handleLogin}
+        >
           {title === 'signup' && (
             <>
               <label htmlFor='fullname'>full name</label>
-              <input type='text' id='fullname' placeholder='Joey Tribbiani' />
+              <input
+                type='text'
+                id='fullname'
+                placeholder='Joey Tribbiani'
+                onChange={handleOnChange}
+                value={fullname}
+              />
             </>
           )}
           <label htmlFor='email'>email</label>
-          <input type='email' id='email' placeholder='joeytribbiani@mail.com' />
+          <input
+            type='email'
+            id='email'
+            placeholder='joeytribbiani@mail.com'
+            onChange={handleOnChange}
+            value={email}
+          />
           <label htmlFor='password'>password</label>
-          <input type='password' id='password' placeholder='Password' />
+          <input
+            type='password'
+            id='password'
+            placeholder='Password'
+            onChange={handleOnChange}
+            value={password}
+          />
 
-          <span className='error'>error</span>
-          <button className='btnSubmit' type='submit' onSubmit={handleSubmit}>
+          {error && <span className='error'>{error}</span>}
+          <button
+            className='btnSubmit'
+            type='submit'
+            onSubmit={title === 'signup' ? handleSignup : handleLogin}
+          >
             {title}
           </button>
         </form>
@@ -54,9 +153,10 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 3rem 0;
   height: 100%;
-  min-height: 95vh;
+  min-height: 100vh;
   max-height: 150vh;
   background-color: var(--purple-5);
 

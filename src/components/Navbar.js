@@ -3,8 +3,11 @@ import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
+import { useUserContext } from '../context/userContext';
 
 function Navbar() {
+  const { number } = useUserContext();
+
   return (
     <Wrapper>
       <Link to='/' className='logoDiv'>
@@ -18,8 +21,14 @@ function Navbar() {
             {navLinks.map((link, idx) => {
               return (
                 <NavLink key={idx} to={link.path} className='navlink'>
-                  <span className='linkName'>
+                  <span
+                    className='linkName'
+                    id={link.name === 'cart' ? 'cart' : ''}
+                  >
                     {link.name === 'cart' ? link.icon : link.name}
+                    {link.name === 'cart' ? (
+                      <span className='cartNum'>{number}</span>
+                    ) : null}
                   </span>
                 </NavLink>
               );
@@ -32,6 +41,10 @@ function Navbar() {
 }
 
 const Wrapper = styled.nav`
+  position: absolute;
+  top: 0;
+  left: 0;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -102,6 +115,31 @@ const Wrapper = styled.nav`
 
   .linkName:hover::after {
     width: 100%;
+  }
+
+  #cart {
+    position: relative;
+    transition: all 0.4s ease-in;
+  }
+
+  .cartNum {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.8rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  #cart:hover::after {
+    width: 0;
+  }
+
+  #cart:hover {
+    color: var(--active);
   }
 
   @media (max-width: 1100px) {

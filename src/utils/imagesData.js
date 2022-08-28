@@ -1,9 +1,16 @@
-export const heroImages = [
-  'https://i.ibb.co/P14N6dQ/igor-karimov-Yuipf-Pt-OH1k-unsplash.jpg',
-  'https://i.ibb.co/1Rs7mPF/venson-chou-n-D2-Bj-SLt0u-E-unsplash.jpg',
-  'https://i.ibb.co/WDC9GVc/akhil-yerabati-Q2u-V5-Tkj-Nz8-unsplash.jpg',
-  'https://i.ibb.co/3F7W664/jeshoots-com-e-Cktz-Gj-C-i-U-unsplash.jpg',
-];
+// export const heroImages = [
+//   'https://i.ibb.co/P14N6dQ/igor-karimov-Yuipf-Pt-OH1k-unsplash.jpg',
+//   'https://i.ibb.co/1Rs7mPF/venson-chou-n-D2-Bj-SLt0u-E-unsplash.jpg',
+//   'https://i.ibb.co/WDC9GVc/akhil-yerabati-Q2u-V5-Tkj-Nz8-unsplash.jpg',
+//   'https://i.ibb.co/3F7W664/jeshoots-com-e-Cktz-Gj-C-i-U-unsplash.jpg',
+// ];
+
+import pic0 from '../assets/0.jpg';
+import pic1 from '../assets/1.jpg';
+import pic2 from '../assets/2.jpg';
+import pic3 from '../assets/3.jpg';
+
+export const heroImages = [pic0, pic1, pic2, pic3];
 
 export const featuredConsoles = [
   'https://i.ibb.co/0MP2BCL/playstation-5.jpg',

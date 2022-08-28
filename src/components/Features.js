@@ -52,6 +52,7 @@ function Features() {
 
 const Wrapper = styled.section`
   padding: 7rem 5rem;
+  margin: 14rem 0;
   display: flex;
   align-items: center;
   justify-content: center;

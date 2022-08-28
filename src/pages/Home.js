@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
   Hero,
@@ -6,18 +7,41 @@ import {
   ProductsSelection,
   Newsletter,
   Footer,
+  Loading,
 } from '../components';
 
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // const timeout = setTimeout(() => setIsLoading(false), 2000);
+
+    // return () => clearInterval(timeout);
+
+    const load = window.addEventListener('load', (event) => {
+      const images = document.querySelectorAll('img');
+      images.forEach((image) => {
+        image.complete && image.naturalHeight !== 0
+          ? setIsLoading(false)
+          : setIsLoading(true);
+      });
+
+      return () => window.removeEventListener(load);
+    });
+  }, []);
+
   return (
-    <Wrapper>
-      <Hero />
-      <Features />
-      <FeatureProducts />
-      <ProductsSelection />
-      <Newsletter />
-      <Footer />
-    </Wrapper>
+    <>
+      {isLoading && <Loading />}
+      <Wrapper>
+        <Hero />
+        <Features />
+        <FeatureProducts />
+        <ProductsSelection />
+        <Newsletter />
+        <Footer />
+      </Wrapper>
+    </>
   );
 }
 

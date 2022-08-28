@@ -30,7 +30,8 @@ const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   gap: 6.4rem;
-  margin-top: 3rem;
+  padding-top: 14rem;
+  min-height: 100vh;
 
   .imgDiv {
     width: 55rem;
@@ -65,6 +66,10 @@ const Wrapper = styled.main`
     line-height: 1.8;
   }
 
+  @media (max-width: 1100px) {
+    padding-top: 10rem;
+  }
+
   @media (max-width: 850px) {
     gap: 4rem;
   }
@@ -72,8 +77,8 @@ const Wrapper = styled.main`
   @media (max-width: 700px) {
     gap: 3rem;
     flex-direction: column;
-    padding: 2rem;
-    padding-bottom: 5rem;
+    padding: 5rem 0;
+    padding-top: 9rem;
 
     .imgDiv {
       width: 100vw;
@@ -91,6 +96,7 @@ const Wrapper = styled.main`
     p {
       word-wrap: break-word;
       line-height: 1.6;
+      font-size: 1.4rem;
     }
   }
 `;

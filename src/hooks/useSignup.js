@@ -1,19 +1,29 @@
 import { useState } from 'react';
 import { auth } from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
 
-  const signup = (email, password) => {
+  const signup = async (email, password, displayName) => {
     setError(null);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(res);
+
+      if (res.user.email) {
+        try {
+          console.log(auth.currentUser);
+          await updateProfile(auth.currentUser, {
+            displayName: displayName,
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return { error, signup };
