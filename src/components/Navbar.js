@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { CartButton, AccountButton } from './';
 import styled from 'styled-components';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
-import { useUserContext } from '../context/userContext';
 
 function Navbar() {
-  const { number } = useUserContext();
-
   return (
     <Wrapper>
       <Link to='/' className='logoDiv'>
@@ -21,18 +19,15 @@ function Navbar() {
             {navLinks.map((link, idx) => {
               return (
                 <NavLink key={idx} to={link.path} className='navlink'>
-                  <span
-                    className='linkName'
-                    id={link.name === 'cart' ? 'cart' : ''}
-                  >
-                    {link.name === 'cart' ? link.icon : link.name}
-                    {link.name === 'cart' ? (
-                      <span className='cartNum'>{number}</span>
-                    ) : null}
-                  </span>
+                  <span className='linkName'>{link.name}</span>
                 </NavLink>
               );
             })}
+
+            <div className='cartAndAuthDiv'>
+              <CartButton />
+              <AccountButton />
+            </div>
           </div>
         </>
       )}
@@ -81,23 +76,21 @@ const Wrapper = styled.nav`
   }
 
   .navlink {
-    font-size: 2.4rem;
-    font-family: Orbitron;
-    font-weight: 900;
     text-transform: uppercase;
     margin-right: 3rem;
   }
 
-  .navlink:last-of-type {
-    margin-right: 0;
-  }
-
-  .navlink:nth-of-type(4) {
-    font-size: 3.2rem;
+  .cartAndAuthDiv {
+    display: flex;
+    align-items: center;
     margin-left: 8rem;
+    gap: 3rem;
   }
 
   .linkName {
+    font-size: 2.4rem;
+    font-family: Orbitron;
+    font-weight: 900;
     text-transform: uppercase;
     position: relative;
   }
@@ -117,31 +110,6 @@ const Wrapper = styled.nav`
     width: 100%;
   }
 
-  #cart {
-    position: relative;
-    transition: all 0.4s ease-in;
-  }
-
-  .cartNum {
-    position: absolute;
-    top: -0.5rem;
-    right: -0.8rem;
-    width: 2rem;
-    height: 2rem;
-    font-size: 1.4rem;
-    text-align: center;
-    border-radius: 50%;
-    background-color: red;
-  }
-
-  #cart:hover::after {
-    width: 0;
-  }
-
-  #cart:hover {
-    color: var(--active);
-  }
-
   @media (max-width: 1100px) {
     padding: 1rem 0;
 
@@ -153,11 +121,6 @@ const Wrapper = styled.nav`
       width: 4.8rem;
       height: 4.8rem;
       margin-right: 0.8rem;
-    }
-
-    .navlink:nth-of-type(4) {
-      font-size: 3.2rem;
-      margin-left: 3rem;
     }
   }
 

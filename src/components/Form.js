@@ -9,10 +9,12 @@ import {
 } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import Loading from './Loading';
+import { useUserContext } from '../context/userContext';
 
 function Form() {
   const title = useLocation().pathname.slice(1);
   const navigate = useNavigate('/');
+  const { setCurrentUser } = useUserContext();
 
   const [formData, setFormData] = useState({
     fullname: '',
@@ -52,6 +54,7 @@ function Form() {
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
+      setCurrentUser(email);
       setIsLoading(false);
       navigate('/');
     } catch (error) {
@@ -73,11 +76,10 @@ function Form() {
       );
 
       if (userCredential.user) {
+        setCurrentUser(email);
+        setIsLoading(false);
         navigate('/');
       }
-
-      setIsLoading(false);
-      navigate('/');
     } catch (error) {
       setIsLoading(false);
       setError('Incorrect email/password. Try again.');

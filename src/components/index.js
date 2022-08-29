@@ -1,3 +1,5 @@
+import AccountButton from './AccountButton';
+import CartButton from './CartButton';
 import Features from './Features';
 import FeatureProducts from './FeatureProducts';
 import Footer from './Footer';
@@ -10,6 +12,8 @@ import ProductsSelection from './ProductsSelection';
 import Sidebar from './Sidebar';
 
 export {
+  AccountButton,
+  CartButton,
   Features,
   FeatureProducts,
   Footer,

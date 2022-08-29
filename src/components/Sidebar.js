@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { IoClose } from 'react-icons/io5';
+import { CartButton, AccountButton } from './';
+import { IoClose, IoPersonAdd, IoPersonRemove } from 'react-icons/io5';
 import { navLinks } from '../utils/navLinks';
+import { useUserContext } from '../context/userContext';
 
 function Sidebar({ scrollHeight }) {
+  const { currentUser } = useUserContext();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -30,6 +33,23 @@ function Sidebar({ scrollHeight }) {
               </NavLink>
             );
           })}
+
+          <div className='cartAndAuthDiv'>
+            <NavLink to={'/cart'} className='cartDiv'>
+              <CartButton />
+              <span className='linkName cart'>cart</span>
+            </NavLink>
+
+            <NavLink to={'/login'} className='accountDiv'>
+              {currentUser ? (
+                <IoPersonRemove className='accIcon' />
+              ) : (
+                <IoPersonAdd className='accIcon' />
+              )}
+
+              <AccountButton />
+            </NavLink>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -154,14 +174,13 @@ const Wrapper = styled.aside`
     margin: 0 auto;
   }
 
-  .cartAndAuthDiv,
   .linksDiv {
     display: flex;
     flex-direction: column;
   }
 
   .links {
-    margin-bottom: 1.6rem;
+    margin-bottom: 2rem;
   }
 
   .links:hover {
@@ -193,6 +212,41 @@ const Wrapper = styled.aside`
     font-size: 3.2rem;
     margin-right: 1rem;
     margin-bottom: -0.5rem;
+  }
+
+  .cartAndAuthDiv {
+    display: flex;
+    flex-direction: column;
+
+    .cartDiv,
+    .accountDiv {
+      display: flex;
+      gap: 1rem;
+      font-size: 3.2rem;
+    }
+
+    .cart {
+      position: relative;
+    }
+
+    .cart::after {
+      content: '';
+      position: absolute;
+      bottom: 0.8rem;
+      left: 0;
+      background-color: var(--active);
+      width: 0%;
+      height: 0.3rem;
+      transition: all 0.4s ease-in;
+    }
+
+    .cart:hover::after {
+      width: 100%;
+    }
+
+    .accIcon {
+      margin-top: 0.5rem;
+    }
   }
 
   @media (max-width: 600px) {

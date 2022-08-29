@@ -1,10 +1,4 @@
-import {
-  IoHome,
-  IoInformationCircle,
-  IoGameController,
-  IoPersonAdd,
-  IoCart,
-} from 'react-icons/io5';
+import { IoHome, IoInformationCircle, IoGameController } from 'react-icons/io5';
 
 export const navLinks = [
   { name: 'home', path: '/', icon: <IoHome className='icon' /> },
@@ -17,15 +11,5 @@ export const navLinks = [
     name: 'about',
     path: '/about',
     icon: <IoInformationCircle className='icon' />,
-  },
-  {
-    name: 'cart',
-    path: '/cart',
-    icon: <IoCart className='icon' />,
-  },
-  {
-    name: 'login',
-    path: '/login',
-    icon: <IoPersonAdd className='icon' />,
   },
 ];
