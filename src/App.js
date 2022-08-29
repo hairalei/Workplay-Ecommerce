@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { About, Cart, Checkout, Home, LogIn, Products, SignUp } from './pages';
+import {
+  About,
+  Cart,
+  Checkout,
+  Home,
+  LogIn,
+  LogOut,
+  Products,
+  SignUp,
+} from './pages';
 import { Navbar, Sidebar } from './components';
 import { UserProvider } from './context/userContext';
 
@@ -41,6 +50,7 @@ function App() {
             <Route path='/checkout' element={<Checkout />} />
 
             <Route path='/login' element={<LogIn />} />
+            <Route path='/logout' element={<LogOut />} />
             <Route path='/signup' element={<SignUp />} />
           </Routes>
         </BrowserRouter>

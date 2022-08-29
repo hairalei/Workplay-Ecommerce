@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IoPersonAdd, IoPersonRemove } from 'react-icons/io5';
+import { IoPersonAdd, IoPersonRemove, IoPerson } from 'react-icons/io5';
 import { useUserContext } from '../context/userContext';
 
 function AccountButton() {

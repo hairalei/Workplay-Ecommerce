@@ -35,12 +35,14 @@ function Sidebar({ scrollHeight }) {
           })}
 
           <div className='cartAndAuthDiv'>
-            <NavLink to={'/cart'} className='cartDiv'>
+            <div className='cartDiv'>
               <CartButton />
-              <span className='linkName cart'>cart</span>
-            </NavLink>
+              <NavLink to='/cart' className='linkName cart'>
+                cart
+              </NavLink>
+            </div>
 
-            <NavLink to={'/login'} className='accountDiv'>
+            <div className='accountDiv'>
               {currentUser ? (
                 <IoPersonRemove className='accIcon' />
               ) : (
@@ -48,7 +50,7 @@ function Sidebar({ scrollHeight }) {
               )}
 
               <AccountButton />
-            </NavLink>
+            </div>
           </div>
         </div>
       </div>
