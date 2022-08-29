@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   About,
   Cart,
   Checkout,
   Error,
+  ForgotPassword,
   Home,
   LogIn,
   LogOut,
@@ -54,9 +57,17 @@ function App() {
             <Route path='/login' element={<LogIn />} />
             <Route path='/logout' element={<LogOut />} />
             <Route path='/signup' element={<SignUp />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
           </Routes>
         </BrowserRouter>
       </UserProvider>
+
+      <ToastContainer
+        position='bottom-right'
+        hideProgressBar={true}
+        autoClose={2000}
+        closeButton={true}
+      />
     </>
   );
 }

@@ -8,6 +8,8 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { IoEye, IoEyeOff } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 import Loading from './Loading';
 import { useUserContext } from '../context/userContext';
 
@@ -24,6 +26,7 @@ function Form() {
   const { fullname, email, password } = formData;
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleOnChange = (e) => {
     setFormData((prev) => {
@@ -55,6 +58,7 @@ function Form() {
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
       setCurrentUser(email);
+      toast.success('Success! Email created.');
       setIsLoading(false);
       navigate('/');
     } catch (error) {
@@ -116,13 +120,28 @@ function Form() {
             value={email}
           />
           <label htmlFor='password'>password</label>
-          <input
-            type='password'
-            id='password'
-            placeholder='Password'
-            onChange={handleOnChange}
-            value={password}
-          />
+          <div className='passwordDiv'>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id='password'
+              placeholder='Password'
+              onChange={handleOnChange}
+              value={password}
+            />
+            <button
+              className='eye'
+              type='button'
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <IoEye /> : <IoEyeOff />}
+            </button>
+          </div>
+
+          {title === 'login' && (
+            <Link to='/forgot-password' className='forgotpw'>
+              Forgot password
+            </Link>
+          )}
 
           {error && <span className='error'>{error}</span>}
           <button
@@ -157,6 +176,7 @@ const Wrapper = styled.main`
   align-items: center;
   justify-content: center;
   padding: 3rem 0;
+  padding-top: 7rem;
   height: 100%;
   min-height: 100vh;
   max-height: 150vh;
@@ -207,6 +227,20 @@ const Wrapper = styled.main`
         color: var(--grey-5);
       }
 
+      & .forgotpw {
+        text-transform: capitalize;
+        color: var(--blue-shade-3);
+        opacity: 0.7;
+        font-weight: bold;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
       & .error {
         font-size: 1.6rem;
         font-weight: bold;
@@ -248,6 +282,21 @@ const Wrapper = styled.main`
           align-self: normal;
         }
       }
+    }
+
+    .passwordDiv {
+      position: relative;
+      width: 100%;
+    }
+
+    .eye {
+      position: absolute;
+      right: 0.8rem;
+      top: 10%;
+      background-color: transparent;
+      border: none;
+      font-size: 2.8rem;
+      cursor: pointer;
     }
 
     .switchDiv {
