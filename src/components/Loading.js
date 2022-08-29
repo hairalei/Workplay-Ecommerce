@@ -53,7 +53,7 @@ const Wrapper = styled.div`
 
   @keyframes pacman {
     from {
-      transform: translate(-50%, -50%) rotate(0deg);
+      transform: translate(-50%, -50%) rotate(-60deg);
     }
 
     to {

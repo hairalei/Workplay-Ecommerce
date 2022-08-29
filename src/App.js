@@ -4,6 +4,7 @@ import {
   About,
   Cart,
   Checkout,
+  Error,
   Home,
   LogIn,
   LogOut,
@@ -48,6 +49,7 @@ function App() {
             <Route path='/products' element={<Products />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
+            <Route path='*' element={<Error />} />
 
             <Route path='/login' element={<LogIn />} />
             <Route path='/logout' element={<LogOut />} />
