@@ -32,6 +32,8 @@ const Wrapper = styled.main`
   gap: 6.4rem;
   padding-top: 14rem;
   min-height: 100vh;
+  background-color: var(--purple-5);
+  color: var(--grey-1);
 
   .imgDiv {
     width: 55rem;
