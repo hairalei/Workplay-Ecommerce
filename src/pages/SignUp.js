@@ -10,8 +10,6 @@ function SignUp() {
   );
 }
 
-const Wrapper = styled.main`
-  padding-top: 5rem;
-`;
+const Wrapper = styled.main``;
 
 export default SignUp;

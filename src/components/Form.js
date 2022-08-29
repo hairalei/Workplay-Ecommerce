@@ -143,7 +143,8 @@ function Form() {
             </Link>
           )}
 
-          {error && <span className='error'>{error}</span>}
+          {/* {error && <span className='error'>{error}</span>} */}
+          <span className={error ? 'show error' : 'error'}>{error}</span>
           <button
             className='btnSubmit'
             type='submit'
@@ -171,12 +172,11 @@ function Form() {
 }
 
 const Wrapper = styled.main`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 3rem 0;
-  padding-top: 7rem;
+  justify-content: center; */
+  padding: 5rem 0;
   height: 100%;
   min-height: 100vh;
   max-height: 150vh;
@@ -190,10 +190,12 @@ const Wrapper = styled.main`
   }
 
   .container {
+    margin: 1rem auto;
+    margin-top: 3.2rem;
     max-width: 40vw;
     width: 100%;
     background-color: var(--purple-1);
-    padding: 4rem;
+    padding: 3rem 4rem;
     border-radius: 2rem;
     box-shadow: 0 2rem 3rem var(--shadow);
     color: var(--grey-9);
@@ -243,9 +245,17 @@ const Wrapper = styled.main`
 
       & .error {
         font-size: 1.6rem;
+        height: 1.6rem;
         font-weight: bold;
         color: var(--red-2);
         margin-bottom: 1rem;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      & .error.show {
+        opacity: 1;
+        visibility: visible;
       }
 
       & .btnSubmit {
@@ -331,12 +341,12 @@ const Wrapper = styled.main`
 
   @media (max-width: 600px) {
     .heading {
-      font-size: 3.6rem;
+      font-size: 3.2rem;
       margin-bottom: 1.6rem;
     }
     .container {
       padding: 2rem;
-      max-width: 90%;
+      max-width: 95%;
 
       .form {
         label {
@@ -345,6 +355,7 @@ const Wrapper = styled.main`
         }
         input {
           margin-bottom: 1.6rem;
+          font-size: 1.6rem;
         }
       }
     }
