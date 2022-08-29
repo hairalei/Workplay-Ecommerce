@@ -73,11 +73,10 @@ const Wrapper = styled.main`
   }
 
   @media (max-width: 850px) {
-    gap: 4rem;
+    gap: 3rem;
   }
 
   @media (max-width: 700px) {
-    gap: 3rem;
     flex-direction: column;
     padding: 5rem 0;
     padding-top: 9rem;

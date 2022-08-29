@@ -14,9 +14,7 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // const timeout = setTimeout(() => setIsLoading(false), 2000);
-
-    // return () => clearInterval(timeout);
+    // load component shows when ALL images are not fully loaded
     const load = window.addEventListener('load', (event) => {
       setIsLoading(true);
       const images = document.querySelectorAll('img');

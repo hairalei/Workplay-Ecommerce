@@ -172,10 +172,6 @@ function Form() {
 }
 
 const Wrapper = styled.main`
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   padding: 5rem 0;
   height: 100%;
   min-height: 100vh;
@@ -191,7 +187,7 @@ const Wrapper = styled.main`
 
   .container {
     margin: 1rem auto;
-    margin-top: 3.2rem;
+    margin-top: 8rem;
     max-width: 40vw;
     width: 100%;
     background-color: var(--purple-1);
@@ -332,10 +328,11 @@ const Wrapper = styled.main`
     }
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1100px) {
     .container {
       padding: 3rem;
       max-width: 60vw;
+      margin-top: 3.2rem;
     }
   }
 

@@ -43,7 +43,7 @@ function App() {
     <>
       <UserProvider>
         <BrowserRouter>
-          <Navbar value={'5'} color='red' />
+          <Navbar />
           {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
 
           <Routes>

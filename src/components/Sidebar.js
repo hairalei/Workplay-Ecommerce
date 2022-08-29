@@ -27,7 +27,12 @@ function Sidebar({ scrollHeight }) {
         <div className='linksDiv'>
           {navLinks.map((link, idx) => {
             return (
-              <NavLink key={idx} to={link.path} className='navlink links'>
+              <NavLink
+                key={idx}
+                to={link.path}
+                className='navlink links'
+                onClick={() => setIsSidebarOpen(false)}
+              >
                 {link.icon}
                 <span className='linkName'>{link.name}</span>
               </NavLink>
@@ -35,14 +40,14 @@ function Sidebar({ scrollHeight }) {
           })}
 
           <div className='cartAndAuthDiv'>
-            <div className='cartDiv'>
+            <div className='cartDiv' onClick={() => setIsSidebarOpen(false)}>
               <CartButton />
               <NavLink to='/cart' className='linkName cart'>
                 cart
               </NavLink>
             </div>
 
-            <div className='accountDiv'>
+            <div className='accountDiv' onClick={() => setIsSidebarOpen(false)}>
               {currentUser ? (
                 <IoPersonRemove className='accIcon' />
               ) : (
