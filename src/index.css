@@ -119,6 +119,26 @@ body {
   height: min-content;
 }
 
+.btn {
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--purple-3);
+  color: var(--grey-4);
+  padding: 1rem 1.5rem;
+  letter-spacing: 1px;
+  display: inline-block;
+  font-weight: 400;
+  transition: all 0.4s ease-in-out;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  border-color: transparent;
+}
+.btn:hover {
+  background: var(--purple-4);
+}
+
 @keyframes btnAnimation {
   to {
     transform: translateX(100%) rotate(45deg);

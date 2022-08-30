@@ -14,7 +14,7 @@ import {
   Products,
   SignUp,
 } from './pages';
-import { Navbar, Sidebar } from './components';
+import { Navbar, Sidebar, SingleProduct } from './components';
 import { UserProvider } from './context/userContext';
 
 function App() {
@@ -50,6 +50,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/products' element={<Products />} />
+            <Route path='/products/:id' element={<SingleProduct />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<Checkout />} />
             <Route path='*' element={<Error />} />
