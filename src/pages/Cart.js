@@ -23,7 +23,7 @@ function Cart() {
   return (
     <main>
       <ProductNavigation title='cart' />
-      <Wrapper className='page'>
+      <Wrapper>
         <CartContent />
       </Wrapper>
     </main>

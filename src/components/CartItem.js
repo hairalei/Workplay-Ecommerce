@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { formatPrice } from '../utils/helpers';
 import AmountButtons from './AmountButtons';
@@ -19,9 +20,13 @@ const CartItem = ({ id, image, name, color, price, amount }) => {
   return (
     <Wrapper>
       <div className='title'>
-        <img src={image} alt={name} />
+        <Link to={`/products/${id.slice(0, -color.length)}`}>
+          <img src={image} alt={name} />
+        </Link>
         <div>
-          <h5 className='name'>{name}</h5>
+          <Link to={`/products/${id.slice(0, -color.length)}`} className='name'>
+            {name}
+          </Link>
           <p className='color'>
             color : <span style={{ background: color }}></span>
           </p>
@@ -81,6 +86,10 @@ const Wrapper = styled.article`
     margin-bottom: 0.6rem;
   }
 
+  .name:hover {
+    color: var(--primary);
+  }
+
   .color {
     color: var(--grey-5);
     font-size: 1.4rem !important;
@@ -133,7 +142,13 @@ const Wrapper = styled.article`
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
+
   @media (min-width: 776px) {
     .subtotal {
       display: block;
@@ -196,6 +211,29 @@ const Wrapper = styled.article`
       h2 {
         font-size: 2.4rem;
       }
+    }
+  }
+
+  @media (max-width: 380px) {
+    grid-template-columns: 20rem auto;
+
+    .remove-btn,
+    .amount-btns {
+      grid-column: 2/3;
+      grid-row: 1/1;
+    }
+
+    .remove-btn {
+      margin-top: -5rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      font-size: 1rem;
+      margin-left: 3rem;
+    }
+
+    .amount-btns {
+      margin-top: 3rem;
+      margin-left: 0rem;
     }
   }
 `;

@@ -2,16 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { IoCart } from 'react-icons/io5';
-import { useUserContext } from '../context/userContext';
+import { useCartContext } from '../context/cartContext';
 
 function CartButton() {
-  const { number } = useUserContext();
+  const { totalItems } = useCartContext();
 
   return (
     <Wrapper>
       <Link to='/cart'>
         <IoCart className='cart' />
-        <span className='cartNum'>{number}</span>
+        <span className='cartNum'>{totalItems}</span>
       </Link>
     </Wrapper>
   );

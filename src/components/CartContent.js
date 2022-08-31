@@ -39,6 +39,7 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
+    text-align: center;
   }
   .link-btn {
     background: transparent;
@@ -46,14 +47,34 @@ const Wrapper = styled.section`
     text-transform: capitalize;
     padding: 1rem 1.5rem;
     background: var(--purple-3);
-    color: var(--white);
+    color: var(--grey-3);
     border-radius: 1rem;
     letter-spacing: 1px;
     font-weight: 400;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+      background: var(--purple-4);
+    }
   }
   .clear-btn {
-    background: var(--red-2);
+    background: var(--red-1);
+    transition: all 0.4s ease-in-out;
+
+    &:hover {
+      background: var(--red-2);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 2rem;
+
+    .link-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 `;
 export default CartContent;

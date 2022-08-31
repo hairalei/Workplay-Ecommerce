@@ -47,6 +47,19 @@ const Wrapper = styled.header`
   .margin-right {
     margin-right: 0.8rem;
   }
+
+  @media (max-width: 1100px) {
+    margin-top: 9rem;
+  }
+
+  @media (max-width: 600px) {
+    padding-left: 2rem;
+
+    h3 {
+      font-size: 2rem;
+      text-transform: capitalize;
+    }
+  }
 `;
 
 export default ProductNavigation;
