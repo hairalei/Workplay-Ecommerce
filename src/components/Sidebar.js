@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartButton, AccountButton } from './';
 import { IoClose, IoPersonAdd, IoPersonRemove } from 'react-icons/io5';
@@ -49,9 +49,13 @@ function Sidebar({ scrollHeight }) {
 
             <div className='accountDiv' onClick={() => setIsSidebarOpen(false)}>
               {currentUser ? (
-                <IoPersonRemove className='accIcon' />
+                <Link to='/login'>
+                  <IoPersonRemove className='accIcon' />
+                </Link>
               ) : (
-                <IoPersonAdd className='accIcon' />
+                <Link to='/login'>
+                  <IoPersonAdd className='accIcon' />
+                </Link>
               )}
 
               <AccountButton />
@@ -219,6 +223,11 @@ const Wrapper = styled.aside`
     font-size: 3.2rem;
     margin-right: 1rem;
     margin-bottom: -0.5rem;
+    transition: all 0.4s ease-in;
+
+    &:hover {
+      color: var(--active);
+    }
   }
 
   .cartAndAuthDiv {
@@ -253,6 +262,11 @@ const Wrapper = styled.aside`
 
     .accIcon {
       margin-top: 0.5rem;
+      transition: all 0.4s ease-in;
+
+      &:hover {
+        color: var(--active);
+      }
     }
   }
 
