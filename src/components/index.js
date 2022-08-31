@@ -2,6 +2,7 @@ import AccountButton from './AccountButton';
 import AddToCart from './AddToCart';
 import AmountButtons from './AmountButtons';
 import CartButton from './CartButton';
+import CartContent from './CartContent';
 import Features from './Features';
 import FeatureProducts from './FeatureProducts';
 import Footer from './Footer';
@@ -23,6 +24,7 @@ export {
   AccountButton,
   AmountButtons,
   CartButton,
+  CartContent,
   Features,
   FeatureProducts,
   Footer,
