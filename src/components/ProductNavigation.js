@@ -7,7 +7,7 @@ function ProductNavigation({ title, product }) {
     <Wrapper>
       <div className='section-center'>
         <h3>
-          <Link to='/'>Home</Link>/
+          <Link to='/'>Home</Link>/ <span className='margin-right'></span>
           {product && <Link to='/products'>Products /</Link>}
           {title}
         </h3>
@@ -42,6 +42,10 @@ const Wrapper = styled.header`
       color: var(--blue-shade-5);
       opacity: 1;
     }
+  }
+
+  .margin-right {
+    margin-right: 0.8rem;
   }
 `;
 

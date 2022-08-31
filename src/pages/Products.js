@@ -5,7 +5,7 @@ import { ProductNavigation, ProductsList, SingleProduct } from '../components';
 function Products() {
   return (
     <Wrapper>
-      <ProductNavigation />
+      <ProductNavigation title={'products'} />
     </Wrapper>
   );
 }

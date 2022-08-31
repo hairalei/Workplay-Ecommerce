@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FaCheck } from 'react-icons/fa';
 import AmountButtons from './AmountButtons';
-// import { useCartContext } from '../context/cart_context';
+import { useCartContext } from '../context/cartContext';
 
 const AddToCart = ({ singleProduct }) => {
-  //   const { addToCart } = useCartContext();
+  const { addToCart } = useCartContext();
   const { id, stock, colors } = singleProduct;
 
   const [mainColor, setMainColor] = useState(colors[0]);
@@ -53,13 +53,16 @@ const AddToCart = ({ singleProduct }) => {
           decrease={decrease}
           stock={stock}
         />
-        <Link
-          to='/cart'
+        <button
+          type='button'
           className='btn'
-          //   onClick={() => addToCart(id, mainColor, amount, singleProduct)}
+          onClick={() => {
+            addToCart(id, mainColor, amount, singleProduct);
+            toast.success('Added to cart!');
+          }}
         >
           add to cart
-        </Link>
+        </button>
       </div>
     </Wrapper>
   );

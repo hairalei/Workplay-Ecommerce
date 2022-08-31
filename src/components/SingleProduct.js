@@ -21,7 +21,7 @@ function SingleProduct() {
 
   return (
     <Wrapper>
-      <ProductNavigation title={''} product />
+      <ProductNavigation title={name} product />
       <div className='section section-center'>
         <Link to='/products' className='btn'>
           back to products

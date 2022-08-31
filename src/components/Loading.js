@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     height: 15rem;
     border-radius: 50%;
     border: 5px dotted var(--grey-6);
-    animation: pacman 5s linear infinite;
+    animation: pacman 4s linear infinite;
 
     .pacman {
       position: absolute;
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     }
 
     to {
-      transform: translate(-50%, -50%) rotate(720deg);
+      transform: translate(-50%, -50%) rotate(660deg);
     }
   }
 `;

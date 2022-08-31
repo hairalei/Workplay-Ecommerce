@@ -16,6 +16,7 @@ import {
 } from './pages';
 import { Navbar, Sidebar, SingleProduct } from './components';
 import { UserProvider } from './context/userContext';
+import { CartProvider } from './context/cartContext';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -42,25 +43,27 @@ function App() {
   return (
     <>
       <UserProvider>
-        <BrowserRouter>
-          <Navbar />
-          {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
+        <CartProvider>
+          <BrowserRouter>
+            <Navbar />
+            {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
 
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/products/:id' element={<SingleProduct />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/checkout' element={<Checkout />} />
-            <Route path='*' element={<Error />} />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/products/:id' element={<SingleProduct />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/checkout' element={<Checkout />} />
+              <Route path='*' element={<Error />} />
 
-            <Route path='/login' element={<LogIn />} />
-            <Route path='/logout' element={<LogOut />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/forgot-password' element={<ForgotPassword />} />
-          </Routes>
-        </BrowserRouter>
+              <Route path='/login' element={<LogIn />} />
+              <Route path='/logout' element={<LogOut />} />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/forgot-password' element={<ForgotPassword />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
       </UserProvider>
 
       <ToastContainer
