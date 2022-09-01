@@ -12,7 +12,10 @@ const AmountButtons = ({ amount, increase, decrease, stock }) => {
       <button className='amount-btn' onClick={increase}>
         <FaPlus />
       </button>
-      <span className='limited'>{stock <= 5 && `${stock} items left!`}</span>
+      <span className='limited'>
+        {stock <= 5 &&
+          (stock === 1 ? `${stock} item left!` : `${stock} items left!`)}
+      </span>
     </Wrapper>
   );
 };
@@ -44,6 +47,7 @@ const Wrapper = styled.div`
     font-weight: bold;
     font-size: 1.4rem;
     color: var(--red-2);
+    margin-top: 0.5rem;
     grid-column: 1/4;
     animation: limitedAnim 0.7s ease-in-out alternate infinite running;
 

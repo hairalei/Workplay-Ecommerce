@@ -74,8 +74,10 @@ const Wrapper = styled.article`
   }
 
   img {
-    width: 100%;
-    height: 100%;
+    height: 8rem;
+    width: 10rem;
+    max-height: 10rem;
+    max-width: 10rem;
     display: block;
     border-radius: 1rem;
     object-fit: cover;
@@ -187,7 +189,10 @@ const Wrapper = styled.article`
     grid-template-rows: 75px;
 
     img {
-      height: 100%;
+      height: 8rem;
+      width: 10rem;
+      max-height: 10rem;
+      max-width: 10rem;
     }
 
     .title {

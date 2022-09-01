@@ -1,17 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [number, setNumber] = useState(5);
-
-  // useEffect(() => {
-  //     setMyUser()
-  // }, [input])
 
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser, number }}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </UserContext.Provider>
   );

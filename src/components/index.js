@@ -7,7 +7,9 @@ import Features from './Features';
 import FeatureProducts from './FeatureProducts';
 import Footer from './Footer';
 import Form from './Form';
+import GridView from './GridView';
 import Hero from './Hero';
+import ListView from './ListView';
 import Loading from './Loading';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
@@ -29,7 +31,9 @@ export {
   FeatureProducts,
   Footer,
   Form,
+  GridView,
   Hero,
+  ListView,
   Loading,
   Navbar,
   Newsletter,

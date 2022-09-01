@@ -1,23 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
-import { ProductNavigation, ProductImages, Stars, AddToCart } from './';
+import {
+  ProductNavigation,
+  ProductImages,
+  Stars,
+  AddToCart,
+  Loading,
+} from './';
 import { formatPrice } from '../utils/helpers';
-
-import { singleProduct } from '../utils/testData';
+import { useProductsContext } from '../context/productsContext';
 
 function SingleProduct() {
   const {
-    name,
-    price,
-    description,
-    stock,
-    stars,
-    reviews,
-    id: sku,
-    company,
-    images,
-  } = singleProduct;
+    fetchSingleProduct,
+    singleProduct,
+    isProductsLoading,
+    productsError,
+  } = useProductsContext();
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchSingleProduct(id);
+    console.log('fetching');
+  }, [id]);
+
+  useEffect(() => {
+    if (productsError) {
+      toast.error('Could not find product. Please try again.');
+
+      setTimeout(() => navigate('/products'), 3000);
+    }
+  }, [productsError]);
+
+  if (isProductsLoading) {
+    return <Loading />;
+  }
+
+  const { name, price, description, stock, stars, reviews, company, images } =
+    singleProduct;
+
+  console.log(singleProduct);
 
   return (
     <Wrapper>
@@ -40,7 +66,7 @@ function SingleProduct() {
             </p>
             <p className='info'>
               <span>SKU: </span>
-              {sku}
+              {id}
             </p>
             <p className='info'>
               <span>Brand: </span>
@@ -59,12 +85,13 @@ function SingleProduct() {
 const Wrapper = styled.main`
   h2 {
     font-size: 3.6rem;
+    margin-bottom: -1rem;
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1rem;
 
     p {
       margin-bottom: 1rem;
@@ -84,17 +111,19 @@ const Wrapper = styled.main`
   .product-center {
     display: grid;
     gap: 4rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .price {
     color: var(--purple-5);
     font-size: 2.4rem !important;
+    margin-top: -1rem;
   }
 
   .desc {
-    line-height: 2;
+    line-height: 1.7;
     max-width: 45em;
+    color: var(--grey-7);
   }
 
   .info {
@@ -102,9 +131,11 @@ const Wrapper = styled.main`
     width: 300px;
     display: grid;
     grid-template-columns: 125px 1fr;
+    color: var(--grey-7);
 
     span {
       font-weight: 700;
+      color: var(--grey-8);
     }
   }
 
@@ -112,6 +143,7 @@ const Wrapper = styled.main`
     .product-center {
       grid-template-columns: 1fr 1fr;
       align-items: center;
+      margin-top: 1rem;
     }
 
     .price {
