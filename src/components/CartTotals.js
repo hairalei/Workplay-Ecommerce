@@ -6,7 +6,7 @@ import { formatPrice } from '../utils/helpers';
 import { Link } from 'react-router-dom';
 
 const CartTotals = () => {
-  const { totalAmount, shippingFee } = useCartContext();
+  const { totalProductsPrice, shippingFee } = useCartContext();
   const { currentUser } = useUserContext();
 
   return (
@@ -14,14 +14,15 @@ const CartTotals = () => {
       <div>
         <article>
           <h5 className='subtotal'>
-            Subtotal : <span>{formatPrice(totalAmount)}</span>
+            Subtotal : <span>{formatPrice(totalProductsPrice)}</span>
           </h5>
           <p className='shipping'>
             Shipping fee : <span>{formatPrice(shippingFee)}</span>
           </p>
           <hr />
           <h4 className='total'>
-            Order total : <span>{formatPrice(totalAmount + shippingFee)}</span>
+            Order total :{' '}
+            <span>{formatPrice(totalProductsPrice + shippingFee)}</span>
           </h4>
         </article>
 

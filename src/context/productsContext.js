@@ -47,11 +47,11 @@ export const ProductsProvider = ({ children }) => {
       const ref = doc(db, 'products', id);
       const docSnap = await getDoc(ref);
 
-      console.log(docSnap);
-      console.log(docSnap.data());
-
       if (docSnap.exists()) {
-        dispatch({ type: SET_SINGLE_PRODUCT, payload: docSnap.data() });
+        dispatch({
+          type: SET_SINGLE_PRODUCT,
+          payload: { ...docSnap.data(), id },
+        });
       } else {
         dispatch({ type: SHOW_ERROR, payload: 'No such product exists.' });
       }

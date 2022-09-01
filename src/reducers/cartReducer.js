@@ -52,7 +52,6 @@ const cartReducer = (state, action) => {
       const { id, value } = action.payload;
 
       const tempCart = state.cart.map((item) => {
-        console.log(item.amount);
         let newAmount = item.amount;
         if (item.id === id) {
           if (value === 'inc') {
@@ -67,17 +66,18 @@ const cartReducer = (state, action) => {
     }
 
     case COUNT_CART_TOTALS: {
-      const { totalItems, totalAmount } = state.cart.reduce(
+      const { totalItems, totalProductsPrice } = state.cart.reduce(
         (total, item) => {
           return {
             totalItems: total.totalItems + item.amount,
-            totalAmount: total.totalAmount + item.amount * item.price,
+            totalProductsPrice:
+              total.totalProductsPrice + item.amount * item.price,
           };
         },
-        { totalItems: 0, totalAmount: 0 }
+        { totalItems: 0, totalProductsPrice: 0 }
       );
 
-      return { ...state, totalAmount, totalItems };
+      return { ...state, totalProductsPrice, totalItems };
     }
   }
 

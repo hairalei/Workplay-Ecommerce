@@ -38,48 +38,46 @@ function SingleProduct() {
 
   if (isProductsLoading) {
     return <Loading />;
-  }
+  } else {
+    const { name, price, description, stock, stars, reviews, company, images } =
+      singleProduct;
 
-  const { name, price, description, stock, stars, reviews, company, images } =
-    singleProduct;
+    return (
+      <Wrapper>
+        <ProductNavigation title={name} product />
+        <div className='section section-center'>
+          <Link to='/products' className='btn'>
+            back to products
+          </Link>
+          <div className='product-center'>
+            <ProductImages images={images || ['']} name={name} />
 
-  console.log(singleProduct);
+            <section className='content'>
+              <h2>{name}</h2>
+              <Stars stars={stars} reviews={reviews} />
+              <h5 className='price'>{formatPrice(price)}</h5>
+              <p className='desc'>{description}</p>
+              <p className='info'>
+                <span>Available: </span>
+                {stock > 0 ? 'In stock' : 'Out of stock'}
+              </p>
+              <p className='info'>
+                <span>SKU: </span>
+                {id}
+              </p>
+              <p className='info'>
+                <span>Brand: </span>
+                {company}
+              </p>
+              <hr />
 
-  return (
-    <Wrapper>
-      <ProductNavigation title={name} product />
-      <div className='section section-center'>
-        <Link to='/products' className='btn'>
-          back to products
-        </Link>
-        <div className='product-center'>
-          <ProductImages images={images} name={name} />
-
-          <section className='content'>
-            <h2>{name}</h2>
-            <Stars stars={stars} reviews={reviews} />
-            <h5 className='price'>{formatPrice(price)}</h5>
-            <p className='desc'>{description}</p>
-            <p className='info'>
-              <span>Available: </span>
-              {stock > 0 ? 'In stock' : 'Out of stock'}
-            </p>
-            <p className='info'>
-              <span>SKU: </span>
-              {id}
-            </p>
-            <p className='info'>
-              <span>Brand: </span>
-              {company}
-            </p>
-            <hr />
-
-            {stock > 0 && <AddToCart singleProduct={singleProduct} />}
-          </section>
+              {stock > 0 && <AddToCart singleProduct={singleProduct} id={id} />}
+            </section>
+          </div>
         </div>
-      </div>
-    </Wrapper>
-  );
+      </Wrapper>
+    );
+  }
 }
 
 const Wrapper = styled.main`

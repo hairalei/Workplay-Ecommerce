@@ -46,8 +46,8 @@ function App() {
     <>
       <UserProvider>
         <ProductsProvider>
-          <CartProvider>
-            <FilterProvider>
+          <FilterProvider>
+            <CartProvider>
               <BrowserRouter>
                 <Navbar />
                 {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
@@ -67,8 +67,8 @@ function App() {
                   <Route path='/forgot-password' element={<ForgotPassword />} />
                 </Routes>
               </BrowserRouter>
-            </FilterProvider>
-          </CartProvider>
+            </CartProvider>
+          </FilterProvider>
         </ProductsProvider>
       </UserProvider>
 

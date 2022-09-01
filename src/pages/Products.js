@@ -9,10 +9,13 @@ import {
 } from '../components';
 import useCollection from '../hooks/useCollection';
 import { useProductsContext } from '../context/productsContext';
+import { singleProduct } from '../utils/testData';
 
 function Products() {
   // const { data } = useCollection();
   // console.log(data);
+
+  console.log(singleProduct.length);
 
   const { products, isProductsLoading, productsError } = useProductsContext();
 
