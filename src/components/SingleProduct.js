@@ -122,6 +122,7 @@ const Wrapper = styled.main`
     line-height: 1.7;
     max-width: 45em;
     color: var(--grey-7);
+    font-size: 1.6rem;
   }
 
   .info {
@@ -144,6 +145,16 @@ const Wrapper = styled.main`
       margin-top: 1rem;
     }
 
+    .price {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: -1rem;
+    }
     .price {
       font-size: 1.8rem;
     }

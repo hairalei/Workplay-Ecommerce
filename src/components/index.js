@@ -5,6 +5,7 @@ import CartButton from './CartButton';
 import CartContent from './CartContent';
 import Features from './Features';
 import FeatureProducts from './FeatureProducts';
+import Filters from './Filters';
 import Footer from './Footer';
 import Form from './Form';
 import GridView from './GridView';
@@ -19,6 +20,7 @@ import ProductNavigation from './ProductNavigation';
 import ProductsSelection from './ProductsSelection';
 import Sidebar from './Sidebar';
 import SingleProduct from './SingleProduct';
+import Sort from './Sort';
 import Stars from './Stars';
 
 export {
@@ -29,6 +31,7 @@ export {
   CartContent,
   Features,
   FeatureProducts,
+  Filters,
   Footer,
   Form,
   GridView,
@@ -43,5 +46,6 @@ export {
   ProductsSelection,
   Sidebar,
   SingleProduct,
+  Sort,
   Stars,
 };

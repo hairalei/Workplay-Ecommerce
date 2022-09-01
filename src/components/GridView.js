@@ -20,7 +20,7 @@ const Wrapper = styled.section`
   }
   .products-container {
     display: grid;
-    gap: 2rem 1.5rem;
+    gap: 2rem;
   }
   @media (min-width: 992px) {
     .products-container {

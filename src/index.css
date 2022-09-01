@@ -81,6 +81,18 @@ button:focus-visible {
   border: 3px dotted var(--primary-light);
 }
 
+/* button {
+  border: transparent;
+  outline: transparent;
+} */
+
+/* button:focus,
+button:focus-visible,
+button:focus-within {
+  border: 3px dotted var(--primary-light);
+  background-color: var(var(--primary));
+} */
+
 html {
   font-size: 62.5%;
 }
