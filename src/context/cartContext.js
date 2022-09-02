@@ -12,7 +12,7 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem('workplay')) || [],
   totalItems: 0,
   totalProductsPrice: 0,
-  shippingFee: 300,
+  shippingFee: 499,
 };
 
 const CartContext = React.createContext();
