@@ -13,6 +13,7 @@ import {
   LogOut,
   Products,
   SignUp,
+  PrivateRoute,
 } from './pages';
 import { Navbar, Sidebar, SingleProduct } from './components';
 import { UserProvider } from './context/userContext';
@@ -58,7 +59,14 @@ function App() {
                   <Route path='/products' element={<Products />} />
                   <Route path='/products/:id' element={<SingleProduct />} />
                   <Route path='/cart' element={<Cart />} />
-                  <Route path='/checkout' element={<Checkout />} />
+                  <Route
+                    path='/checkout'
+                    element={
+                      <PrivateRoute>
+                        <Checkout />
+                      </PrivateRoute>
+                    }
+                  />
                   <Route path='*' element={<Error />} />
 
                   <Route path='/login' element={<LogIn />} />

@@ -6,6 +6,7 @@ import ForgotPassword from './ForgotPassword';
 import Home from './Home';
 import LogIn from './LogIn';
 import LogOut from './LogOut';
+import PrivateRoute from './PrivateRoute';
 import Products from './Products';
 import SignUp from './SignUp';
 
@@ -18,6 +19,7 @@ export {
   Home,
   LogIn,
   LogOut,
+  PrivateRoute,
   Products,
   SignUp,
 };
