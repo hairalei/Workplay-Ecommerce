@@ -24,6 +24,7 @@ const Filters = () => {
   const categories = getUniqueValues(allProducts, 'category');
   const companies = getUniqueValues(allProducts, 'company');
   const colors = getUniqueValues(allProducts, 'colors');
+  console.log(colors);
 
   return (
     <Wrapper>
@@ -172,7 +173,6 @@ const Wrapper = styled.section`
     color: var(--clr-grey-5);
     cursor: pointer;
 
-    &:focus,
     &:focus-visible {
       border: 3px dotted var(--primary-light);
     }
@@ -202,19 +202,18 @@ const Wrapper = styled.section`
     margin-right: 0.5rem;
     border: none;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    &:focus,
     &:focus-visible {
       border: 3px dotted var(--green-8);
     }
 
     svg {
-      font-size: 0.5rem;
-      color: var(--clr-white);
+      font-size: 0.8rem;
+      color: var(--white);
     }
   }
 
@@ -225,7 +224,6 @@ const Wrapper = styled.section`
     margin-right: 0.5rem;
     opacity: 0.5;
 
-    &:focus,
     &:focus-visible {
       border: 3px dotted var(--green-8);
     }
@@ -259,7 +257,6 @@ const Wrapper = styled.section`
       background: var(--red-2);
     }
 
-    &:focus,
     &:focus-visible {
       border: 3px dotted var(--green-8);
     }

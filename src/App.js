@@ -12,6 +12,7 @@ import {
   LogIn,
   LogOut,
   Products,
+  Profile,
   SignUp,
   PrivateRoute,
 } from './pages';
@@ -24,8 +25,11 @@ import { FilterProvider } from './context/filterContext';
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
   const stickNavbar = () => {
+    setInnerWidth(window.innerWidth);
+
     if (window !== undefined) {
       let windowHeight = window.scrollY;
 
@@ -35,13 +39,16 @@ function App() {
   };
 
   useEffect(() => {
+    window.addEventListener('resize', stickNavbar);
+
     if (window.innerWidth <= 900) setShowSidebar(true);
     window.addEventListener('scroll', stickNavbar);
 
     return () => {
       window.removeEventListener('scroll', stickNavbar);
+      window.removeEventListener('resize', stickNavbar);
     };
-  }, [scrollHeight]);
+  }, [scrollHeight, innerWidth]);
 
   return (
     <>
@@ -57,6 +64,7 @@ function App() {
                   <Route path='/' element={<Home />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/products' element={<Products />} />
+                  <Route path='/profile' element={<Profile />} />
                   <Route path='/products/:id' element={<SingleProduct />} />
                   <Route path='/cart' element={<Cart />} />
                   <Route

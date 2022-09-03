@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartButton, AccountButton } from './';
-import { IoClose, IoPersonAdd, IoPersonRemove } from 'react-icons/io5';
+import {
+  IoClose,
+  IoPersonAdd,
+  IoPersonRemove,
+  IoPerson,
+} from 'react-icons/io5';
 import { navLinks } from '../utils/navLinks';
 import { useUserContext } from '../context/userContext';
 
@@ -47,20 +52,24 @@ function Sidebar({ scrollHeight }) {
               </NavLink>
             </div>
 
-            <div className='accountDiv' onClick={() => setIsSidebarOpen(false)}>
+            <div className='' onClick={() => setIsSidebarOpen(false)}>
               {currentUser ? (
-                <Link to='/login'>
-                  <IoPersonRemove className='accIcon' />
-                </Link>
+                <NavLink to='/profile'>
+                  <IoPerson className='icon' />
+                  <span className='linkName'>Profile</span>
+                </NavLink>
               ) : (
-                <Link to='/login'>
-                  <IoPersonAdd className='accIcon' />
-                </Link>
+                <NavLink to='/login'>
+                  <IoPersonAdd className='icon' />
+                  <span className='linkName'>Login</span>
+                </NavLink>
               )}
-
-              <AccountButton />
             </div>
           </div>
+          <NavLink className='logout' to='/logout'>
+            <IoPersonRemove className='icon' />
+            <span className='linkName'>Logout</span>
+          </NavLink>
         </div>
       </div>
     </Wrapper>
@@ -233,6 +242,7 @@ const Wrapper = styled.aside`
   .cartAndAuthDiv {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
     .cartDiv,
     .accountDiv {
@@ -259,18 +269,15 @@ const Wrapper = styled.aside`
     .cart:hover::after {
       width: 100%;
     }
-
-    .accIcon {
-      margin-top: 0.5rem;
-      transition: all 0.4s ease-in;
-
-      &:hover {
-        color: var(--active);
-      }
-    }
   }
 
-  @media (max-width: 600px) {
+  .logout {
+    position: absolute;
+    bottom: 4rem;
+    color: var(--red-2);
+  }
+
+  @media (max-width: 900px) {
     .navCircle {
       top: 0.7rem;
       right: 1rem;

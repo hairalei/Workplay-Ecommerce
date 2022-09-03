@@ -4,6 +4,7 @@ import { CartButton, AccountButton } from './';
 import styled from 'styled-components';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
+import Sidebar from './Sidebar';
 
 function Navbar() {
   return (
@@ -13,24 +14,20 @@ function Navbar() {
         <span>Workplay</span>
       </Link>
 
-      {window.innerWidth > 900 && (
-        <>
-          <div className='linksDiv'>
-            {navLinks.map((link, idx) => {
-              return (
-                <NavLink key={idx} to={link.path} className='navlink'>
-                  <span className='linkName'>{link.name}</span>
-                </NavLink>
-              );
-            })}
+      <div className='linksDiv'>
+        {navLinks.map((link, idx) => {
+          return (
+            <NavLink key={idx} to={link.path} className='navlink'>
+              <span className='linkName'>{link.name}</span>
+            </NavLink>
+          );
+        })}
 
-            <div className='cartAndAuthDiv'>
-              <CartButton />
-              <AccountButton />
-            </div>
-          </div>
-        </>
-      )}
+        <div className='cartAndAuthDiv'>
+          <CartButton />
+          <AccountButton />
+        </div>
+      </div>
     </Wrapper>
   );
 }
@@ -73,6 +70,10 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 900px) {
+      display: none;
+    }
   }
 
   .navlink {
@@ -108,6 +109,12 @@ const Wrapper = styled.nav`
 
   .linkName:hover::after {
     width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .cartAndAuthDiv {
+      margin-left: 3rem;
+    }
   }
 
   @media (max-width: 1100px) {

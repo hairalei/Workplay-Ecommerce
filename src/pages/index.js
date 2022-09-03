@@ -8,6 +8,7 @@ import LogIn from './LogIn';
 import LogOut from './LogOut';
 import PrivateRoute from './PrivateRoute';
 import Products from './Products';
+import Profile from './Profile';
 import SignUp from './SignUp';
 
 export {
@@ -21,5 +22,6 @@ export {
   LogOut,
   PrivateRoute,
   Products,
+  Profile,
   SignUp,
 };
