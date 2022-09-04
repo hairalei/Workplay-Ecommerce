@@ -51,7 +51,7 @@ function Form() {
         displayName: fullname,
       });
 
-      const formDataCopy = { ...formData };
+      const formDataCopy = { ...formData, uid: user.uid };
       delete formDataCopy.password;
       formDataCopy.timestamp = serverTimestamp();
 

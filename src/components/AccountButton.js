@@ -59,13 +59,13 @@ const Wrapper = styled.div`
     border-bottom-right-radius: 0.5rem;
     padding: 2rem 1rem;
     height: 6rem;
-    transform: translateY(-100%) scale(0);
+    transform: translateY(-50%) rotateX(90deg);
     opacity: 0.8;
     transition: all 0.3s linear;
 
     &:hover {
       color: var(--red-2);
-      transform: translateY(0%) scale(1);
+      transform: translateY(0%) rotateX(0);
       opacity: 1;
     }
   }

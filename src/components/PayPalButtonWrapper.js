@@ -6,6 +6,7 @@ import {
 } from '@paypal/react-paypal-js';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../context/cartContext';
+import { useUserContext } from '../context/userContext';
 import Loading from './Loading';
 import { toast } from 'react-toastify';
 import { formatPrice } from '../utils/helpers';
@@ -18,6 +19,7 @@ const initialOptions = {
 
 function PayPalButtonWrapper() {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const { addToOrderHistory } = useUserContext();
   const { cart, totalProductsPrice, shippingFee } = useCartContext();
   const itemsDescription = cart.map((item) => item.name).join(' & ');
   const totalPrice = (totalProductsPrice + shippingFee) / 100;
@@ -59,6 +61,7 @@ function PayPalButtonWrapper() {
             .then((details) => {
               const name = details.payer.name.given_name;
               console.log(data);
+              addToOrderHistory(data.orderID, cart);
               toast.success(
                 `Payment Success! Transaction completed by ${name}`
               );

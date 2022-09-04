@@ -17,9 +17,10 @@ const initialOptions = {
 
 function Checkout() {
   const email = 'sb-a2oqc20618385@personal.example.com';
+  const card = '4032037179596487';
 
-  const copy = () => {
-    navigator.clipboard.writeText(email);
+  const copy = (text) => {
+    navigator.clipboard.writeText(text);
     toast.success('Copied to clipboard!');
   };
 
@@ -28,14 +29,19 @@ function Checkout() {
       <PayPalScriptProvider deferLoading={true} options={initialOptions}>
         <div>
           <h1>Choose payment:</h1>
-          <PayPalButtonWrapper />
-          <p onClick={copy}>
-            <span className='email'>Click to Copy email:</span>{' '}
+          <p className='copy' onClick={() => copy(email)}>
+            <span className='email'>Click to Copy email: </span>
             sb-a2oqc20618385@personal.example.com
           </p>
-          <p>
+          <p className='passwordP'>
             <span className='password'>Remember password:</span> 123456789
           </p>
+          <PayPalButtonWrapper />
+          <p className='copy' onClick={() => copy(card)}>
+            <span className='email'>Click to Copy Test Card: </span>
+            4032037179596487
+          </p>
+          <p>Expiry Date: 09/2027 </p>
         </div>
       </PayPalScriptProvider>
     </Wrapper>
@@ -47,10 +53,12 @@ const Wrapper = styled.main`
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  /* justify-content: center; */
+  padding-top: 14rem;
+  min-height: 100vh;
+  height: 100%;
   max-height: 100vh;
-  background-color: var(--white);
+  background-color: var(--bg-color);
   color: var(--grey-7);
 
   div {
@@ -68,14 +76,17 @@ const Wrapper = styled.main`
     margin-bottom: 0.5rem;
     letter-spacing: 1px;
     color: var(--grey-5);
-    cursor: pointer;
   }
 
-  p:last-of-type {
+  p.passwordP {
     font-size: 2rem;
     font-weight: 900;
     color: red;
     margin-bottom: 2rem;
+  }
+
+  .copy {
+    cursor: pointer;
   }
 
   .email,

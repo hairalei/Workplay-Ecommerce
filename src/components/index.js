@@ -14,6 +14,7 @@ import ListView from './ListView';
 import Loading from './Loading';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
+import OrderHistory from './OrderHistory';
 import ProductImages from './ProductImages';
 import ProductsList from './ProductsList';
 import ProductNavigation from './ProductNavigation';
@@ -40,6 +41,7 @@ export {
   Loading,
   Navbar,
   Newsletter,
+  OrderHistory,
   ProductImages,
   ProductsList,
   ProductNavigation,

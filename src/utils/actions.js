@@ -25,4 +25,7 @@ export const CLEAR_FILTERS = 'CLEAR_FILTERS';
 
 // User Context
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SET_USER_ID = 'SET_USER_ID';
 export const ADD_TO_ORDER_HISTORY = 'ADD_TO_ORDER_HISTORY';
+export const GET_ORDER_HISTORY = 'GET_ORDER_HISTORY';
+export const LOADING = 'LOADING';

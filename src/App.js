@@ -64,7 +64,14 @@ function App() {
                   <Route path='/' element={<Home />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/products' element={<Products />} />
-                  <Route path='/profile' element={<Profile />} />
+                  <Route
+                    path='/profile'
+                    element={
+                      <PrivateRoute>
+                        <Profile />
+                      </PrivateRoute>
+                    }
+                  />
                   <Route path='/products/:id' element={<SingleProduct />} />
                   <Route path='/cart' element={<Cart />} />
                   <Route
