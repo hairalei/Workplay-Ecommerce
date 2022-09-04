@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { OrderHistory, ProductNavigation } from '../components';
 import { useUserContext } from '../context/userContext';
@@ -6,6 +7,12 @@ import { auth } from '../firebase/firebase.config';
 
 function Profile() {
   const { displayName: name, email } = auth.currentUser;
+  const { orderHistory, getOrderHistory } = useUserContext();
+
+  useEffect(() => {
+    getOrderHistory();
+    console.log(orderHistory);
+  }, []);
 
   return (
     <>
@@ -19,7 +26,20 @@ function Profile() {
           </div>
 
           <h2>My Order History</h2>
-          <OrderHistory key={name} />
+          {orderHistory.length < 1 && (
+            <div className='center'>
+              <h3>No orders yet...</h3>
+              <Link to='/products' className='btn'>
+                shop our products
+              </Link>
+            </div>
+          )}
+          {orderHistory.length >= 1 &&
+            orderHistory
+              .sort((a, b) => b.orderTimestamp - a.orderTimestamp)
+              .map((order, idx) => {
+                return <OrderHistory order={order} key={idx} />;
+              })}
         </div>
       </Wrapper>
     </>
@@ -54,11 +74,33 @@ const Wrapper = styled.main`
     }
 
     .profileInfo {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       padding: 0 2rem;
 
       .name {
         text-transform: capitalize;
+      }
+    }
+  }
+
+  .center {
+    text-align: center;
+
+    h3 {
+      font-size: 3.2rem;
+      padding-top: 2rem;
+      color: var(--grey-7);
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      max-width: 100vw;
+      padding: 2rem 1rem;
+
+      .profileInfo {
+        padding: 0;
       }
     }
   }

@@ -61,7 +61,7 @@ function PayPalButtonWrapper() {
             .then((details) => {
               const name = details.payer.name.given_name;
               console.log(data);
-              addToOrderHistory(data.orderID, cart);
+              addToOrderHistory(data.orderID, cart, totalPrice);
               toast.success(
                 `Payment Success! Transaction completed by ${name}`
               );

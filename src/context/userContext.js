@@ -72,7 +72,7 @@ export const UserProvider = ({ children }) => {
     dispatch({ type: SET_CURRENT_USER, payload: user });
   };
 
-  const addToOrderHistory = async (orderID, cart) => {
+  const addToOrderHistory = async (orderID, cart, totalPrice) => {
     try {
       const ref = doc(db, 'users', state.userID);
 
@@ -80,6 +80,7 @@ export const UserProvider = ({ children }) => {
         orderHistory: arrayUnion({
           orderID,
           cart,
+          totalPrice,
           orderTimestamp: Date.now(),
           date: moment().format('lll'),
         }),

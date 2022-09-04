@@ -1,62 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { useUserContext } from '../context/userContext';
-import { formatPrice } from '../utils/helpers';
+import OrderHistoryItem from './OrderHistoryItem';
 
-function OrderHistory() {
-  const { orderHistory, getOrderHistory } = useUserContext();
-
-  useEffect(() => {
-    getOrderHistory();
-  }, []);
-
-  if (orderHistory.length === 0) {
-    return (
-      <Wrapper>
-        <div className='center'>
-          <h3>No orders yet...</h3>
-          <Link to='/products' className='btn'>
-            shop our products
-          </Link>
-        </div>
-      </Wrapper>
-    );
-  }
+function OrderHistory({ order }) {
+  const { orderID, cart, date, totalPrice } = order;
 
   return (
     <Wrapper>
-      <div className='container'>
-        {orderHistory
-          .sort((a, b) => b.orderTimestamp - a.orderTimestamp)
-          .map((order, idx) => {
-            const { orderID, cart } = order;
-
-            return (
-              <>
-                <h5>OrderID: {orderID}</h5>
-                <h5>Date: Sep 4th 2022, 10:07 pm </h5>
-                {cart.map((item, idx) => {
-                  const { name, amount, color, image, price } = item;
-                  return (
-                    <div className='table flex'>
-                      <img src={image} alt={name} />
-                      <div className='info'>
-                        <p>{name}</p>
-                        <p className='color'>
-                          Color : <span style={{ background: color }}></span>
-                        </p>
-                        <div className='flex'>
-                          <p>&times;{amount}</p>
-                          <h5 className='price'>{formatPrice(price)}</h5>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </>
-            );
-          })}
+      <div className='orderContainer'>
+        <h5>OrderID: {orderID}</h5>
+        <h5>Date: {date} </h5>
+        {cart.map((item, idx) => {
+          return <OrderHistoryItem item={item} key={idx} />;
+        })}
+        <p className='totalPrice'>Total Price: ${totalPrice}</p>
       </div>
     </Wrapper>
   );
@@ -66,35 +23,30 @@ const Wrapper = styled.section`
   padding: 0 2rem;
   width: 100%;
 
-  .center {
-    text-align: center;
+  .orderContainer {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--grey-4);
 
-    h3 {
-      font-size: 3.2rem;
-      padding-top: 2rem;
-      color: var(--grey-7);
-      margin-bottom: 1rem;
-    }
-  }
-
-  .flex {
-    display: flex;
-  }
-
-  .container {
     h5 {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       color: var(--grey-6);
     }
 
     img {
-      height: 8rem;
-      width: 10rem;
+      height: 10rem;
+      width: 14rem;
       max-height: 10rem;
-      max-width: 10rem;
+      max-width: 14rem;
       display: block;
       border-radius: 1rem;
       object-fit: cover;
+      margin-right: 3rem;
+    }
+
+    .name {
+      font-size: 1.6rem;
+      line-height: 1.3;
     }
 
     .color {
@@ -109,17 +61,80 @@ const Wrapper = styled.section`
 
       span {
         display: inline-block;
-        width: 1rem;
-        height: 1rem;
+        width: 1.4rem;
+        height: 1.4rem;
         background: red;
         margin-left: 0.5rem;
-        border-radius: 5px;
+        border-radius: 50px;
       }
     }
 
-    .price-small {
-      color: var(--purple-5);
+    .table {
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+
+      .price {
+        color: var(--purple-5);
+        font-size: 1.6rem;
+      }
+
+      .flex {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+      }
     }
+  }
+
+  @media (max-width: 780px) {
+    .orderContainer {
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+
+      h5 {
+        font-size: 1.2rem;
+        color: var(--grey-6);
+      }
+
+      img {
+        height: 8rem;
+        width: 10rem;
+        margin-right: 1rem;
+      }
+
+      .name {
+        font-size: 1.4rem;
+      }
+
+      .color {
+        font-size: 1.4rem !important;
+        margin-bottom: 0.3rem;
+
+        span {
+          width: 1rem;
+          height: 1rem;
+          background: red;
+          margin-left: 0.5rem;
+        }
+      }
+
+      .table {
+        margin: 1rem 0;
+
+        .price {
+          font-size: 1.6rem;
+        }
+
+        .flex {
+          gap: 3rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0;
   }
 `;
 

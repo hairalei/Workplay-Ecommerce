@@ -219,8 +219,22 @@ const Wrapper = styled.article`
     }
   }
 
-  @media (max-width: 380px) {
-    grid-template-columns: 20rem auto;
+  @media (max-width: 480px) {
+    grid-template-columns: 25rem auto;
+
+    .title {
+      grid-template-rows: 75px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      text-align: left;
+      gap: 0rem;
+      font-size: 1.4rem;
+
+      .price-small {
+        font-size: 1.4rem !important;
+      }
+    }
 
     .remove-btn,
     .amount-btns {
