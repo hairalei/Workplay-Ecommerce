@@ -11,7 +11,7 @@ const CartTotals = () => {
 
   return (
     <Wrapper>
-      <div>
+      <div className='container'>
         <article>
           <h5 className='subtotal'>
             Subtotal : <span>{formatPrice(totalProductsPrice)}</span>
@@ -35,6 +35,7 @@ const CartTotals = () => {
             Log In
           </Link>
         )}
+        <div className='note'>Free shipping with min order of $50</div>
       </div>
     </Wrapper>
   );
@@ -78,6 +79,13 @@ const Wrapper = styled.section`
     font-size: 1.8rem;
   }
 
+  .note {
+    color: var(--grey-6);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 0.4rem;
+  }
+
   @media (min-width: 776px) {
     justify-content: flex-end;
   }
@@ -86,6 +94,26 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     text-align: center;
     font-weight: 700;
+  }
+
+  @media (max-width: 350px) {
+    width: 100vw;
+
+    .container {
+      width: 100%;
+
+      h4,
+      h5,
+      p {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
   }
 `;
 

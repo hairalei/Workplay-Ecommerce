@@ -16,7 +16,13 @@ import {
   SignUp,
   PrivateRoute,
 } from './pages';
-import { Navbar, Sidebar, SingleProduct, MobileNav } from './components';
+import {
+  Navbar,
+  Sidebar,
+  SingleProduct,
+  MobileNav,
+  Footer,
+} from './components';
 import { UserProvider } from './context/userContext';
 import { ProductsProvider } from './context/productsContext';
 import { CartProvider } from './context/cartContext';
@@ -90,6 +96,7 @@ function App() {
                   <Route path='/forgot-password' element={<ForgotPassword />} />
                 </Routes>
 
+                <Footer />
                 <MobileNav />
               </BrowserRouter>
             </CartProvider>

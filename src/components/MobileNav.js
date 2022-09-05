@@ -19,12 +19,16 @@ function MobileNav() {
           Home
         </Link>
 
-        <Link to={currentUser ? '/profile' : '/login'} className='profile'>
+        <Link
+          to={currentUser ? '/profile' : '/login'}
+          className='profile'
+          onClick={scrollOnTop}
+        >
           <IoPerson />
           {currentUser ? 'Profile' : 'Login'}
         </Link>
 
-        <Link to='/cart' className='cart'>
+        <Link to='/cart' className='cart' onClick={scrollOnTop}>
           <div>
             <IoCart />
             <span className='totalItems'>{totalItems}</span>
@@ -58,9 +62,11 @@ const Wrapper = styled.section`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: var(--grey-6);
 
       svg {
         font-size: 3.2rem;
+        color: var(--grey-8);
       }
     }
 
@@ -87,6 +93,18 @@ const Wrapper = styled.section`
   @media (max-width: 768px) {
     display: block;
     width: 100vw;
+  }
+
+  @media (max-width: 480px) {
+    .home,
+    .profile,
+    .cart {
+      font-size: 1.4rem;
+
+      svg {
+        font-size: 2.8rem;
+      }
+    }
   }
 `;
 

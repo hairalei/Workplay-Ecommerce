@@ -77,7 +77,12 @@ const cartReducer = (state, action) => {
         { totalItems: 0, totalProductsPrice: 0 }
       );
 
-      return { ...state, totalProductsPrice, totalItems };
+      return {
+        ...state,
+        totalProductsPrice,
+        totalItems,
+        shippingFee: totalProductsPrice >= 5000 ? 0 : 499,
+      };
     }
   }
 

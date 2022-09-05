@@ -144,6 +144,22 @@ const Wrapper = styled.nav`
   @media (max-width: 600px) {
     justify-content: start;
     padding-left: 1rem;
+
+    .logoDiv span {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .logoDiv span {
+      font-size: 1.6rem;
+    }
+
+    .logoDiv img {
+      width: 4.8rem;
+      height: 4.8rem;
+      margin-right: 0rem;
+    }
   }
 `;
 

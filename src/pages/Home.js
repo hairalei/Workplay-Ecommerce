@@ -6,7 +6,6 @@ import {
   FeatureProducts,
   ProductsSelection,
   Newsletter,
-  Footer,
   Loading,
 } from '../components';
 
@@ -55,7 +54,6 @@ function Home() {
         <FeatureProducts />
         <ProductsSelection />
         <Newsletter />
-        <Footer />
       </Wrapper>
     </>
   );

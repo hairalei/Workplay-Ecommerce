@@ -26,7 +26,7 @@ function ProductNavigation({ title, product, singleCategory }) {
             </Link>
           ) : (
             <Link to='/products' onClick={() => updateCategory(singleCategory)}>
-              {singleCategory} /
+              {singleCategory && singleCategory + ' /'}
             </Link>
           )}
           {title}

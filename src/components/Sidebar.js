@@ -17,7 +17,10 @@ function Sidebar({ scrollHeight }) {
   const { setScrollHeight } = useProductsContext();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const scrollOnTop = () => setScrollHeight(0);
+  const scrollOnTop = () => {
+    setScrollHeight(0);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Wrapper>
@@ -36,7 +39,6 @@ function Sidebar({ scrollHeight }) {
           className='close'
           onClick={() => {
             setIsSidebarOpen(false);
-            setScrollHeight(0);
           }}
         />
         <div className='linksDiv'>
@@ -48,7 +50,7 @@ function Sidebar({ scrollHeight }) {
                 className='navlink links'
                 onClick={() => {
                   setIsSidebarOpen(false);
-                  setScrollHeight(0);
+                  scrollOnTop();
                 }}
               >
                 {link.icon}
@@ -62,7 +64,7 @@ function Sidebar({ scrollHeight }) {
               className='cartDiv'
               onClick={() => {
                 setIsSidebarOpen(false);
-                setScrollHeight(0);
+                scrollOnTop();
               }}
             >
               <CartButton />
@@ -75,7 +77,7 @@ function Sidebar({ scrollHeight }) {
               className=''
               onClick={() => {
                 setIsSidebarOpen(false);
-                setScrollHeight(0);
+                scrollOnTop();
               }}
             >
               {currentUser ? (
@@ -314,6 +316,10 @@ const Wrapper = styled.aside`
   }
 
   @media (max-width: 400px) {
+    .sidebar {
+      width: 100vw;
+    }
+
     .navCircle {
       top: 1.4rem;
       right: 2rem;
@@ -340,10 +346,6 @@ const Wrapper = styled.aside`
         height: 0.3rem;
       }
     }
-  }
-
-  .sidebar {
-    width: 100vw;
   }
 `;
 
