@@ -6,9 +6,12 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { IoEye, IoEyeOff } from 'react-icons/io5';
+import { doc, serverTimestamp, setDoc, getDoc } from 'firebase/firestore';
+import { IoEye, IoEyeOff, IoMail, IoMailOutline } from 'react-icons/io5';
+import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import Loading from './Loading';
 import { useUserContext } from '../context/userContext';
@@ -90,6 +93,32 @@ function Form() {
     }
   };
 
+  const onGoogleClick = async () => {
+    setError(null);
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Check for user
+      const docRef = doc(db, 'users', user.uid);
+      const docSnap = await getDoc(docRef);
+
+      // If user, doesn't exist, create user
+      if (!docSnap.exists()) {
+        await setDoc(doc(db, 'users', user.uid), {
+          displayName: user.displayName,
+          email: user.email,
+        });
+        setCurrentUser(user.email);
+      }
+      setCurrentUser(user.email);
+      navigate('/');
+    } catch (error) {
+      toast.error('Could not authorize with Google');
+    }
+  };
+
   return (
     <Wrapper>
       {isLoading && <Loading />}
@@ -143,14 +172,16 @@ function Form() {
             </Link>
           )}
 
-          {/* {error && <span className='error'>{error}</span>} */}
           <span className={error ? 'show error' : 'error'}>{error}</span>
           <button
             className='btnSubmit'
             type='submit'
             onSubmit={title === 'signup' ? handleSignup : handleLogin}
           >
-            {title}
+            <IoMailOutline className='icon' /> {title} with Email
+          </button>
+          <button className='btnSubmit' type='button' onClick={onGoogleClick}>
+            <FcGoogle className='icon' /> {title} with Google
           </button>
         </form>
 
@@ -256,7 +287,7 @@ const Wrapper = styled.main`
 
       & .btnSubmit {
         align-self: center;
-        width: 50%;
+        width: 70%;
         text-transform: uppercase;
         font-family: inherit;
         font-size: 1.6rem;
@@ -264,11 +295,21 @@ const Wrapper = styled.main`
         border-radius: 1rem;
         border: none;
         color: inherit;
+        color: var(--grey-8);
         background-color: var(--blue);
         box-shadow: 0 0.5rem 1rem var(--shadow);
         margin-bottom: 1.2rem;
         transition: all 0.3s ease-in-out;
         cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & .icon {
+          font-size: 2.4rem;
+          margin-right: 0.6rem;
+        }
 
         &:hover {
           background-color: var(--primary-light);
