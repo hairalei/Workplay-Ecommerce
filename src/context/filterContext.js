@@ -80,7 +80,7 @@ export const FilterProvider = ({ children }) => {
 
   const updateCategory = (category) => {
     window.scrollTo(0, 100);
-    dispatch({ type: UPDATE_CATEGORY, payload: category });
+    dispatch({ type: UPDATE_CATEGORY, payload: category.toLowerCase() });
   };
 
   const clearFilters = () => {

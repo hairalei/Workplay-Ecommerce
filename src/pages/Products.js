@@ -27,7 +27,7 @@ function Products() {
   return (
     <>
       {isProductsLoading && <Loading />}
-      <ProductNavigation title={'products'} />
+      <ProductNavigation product />
       <Wrapper>
         <div className='products'>
           <button

@@ -18,7 +18,11 @@ function ProductsSelection() {
           return (
             <Link to='/products' key={idx}>
               <div
-                className={isHover ? 'imageBox show' : 'imageBox'}
+                className={
+                  isHover || window.innerWidth <= '768'
+                    ? 'imageBox show'
+                    : 'imageBox'
+                }
                 ref={textRef}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
@@ -123,7 +127,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 480px) {
     h2 {
       padding: 0 2rem;
       font-size: 2.4rem;

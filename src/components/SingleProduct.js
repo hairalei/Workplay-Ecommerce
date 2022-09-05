@@ -38,12 +38,21 @@ function SingleProduct() {
   if (isProductsLoading) {
     return <Loading />;
   } else {
-    const { name, price, description, stock, stars, reviews, company, images } =
-      singleProduct;
+    const {
+      name,
+      price,
+      description,
+      stock,
+      stars,
+      reviews,
+      company,
+      images,
+      category,
+    } = singleProduct;
 
     return (
       <Wrapper>
-        <ProductNavigation title={name} product />
+        <ProductNavigation title={name} product singleCategory={category} />
         <div className='section section-center'>
           <Link to='/products' className='btn'>
             back to products

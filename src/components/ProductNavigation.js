@@ -1,14 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useFilterContext } from '../context/filterContext';
 
-function ProductNavigation({ title, product }) {
+function ProductNavigation({ title, product, singleCategory }) {
+  const {
+    updateCategory,
+    clearFilters,
+    filters: { category },
+  } = useFilterContext();
+
   return (
     <Wrapper>
       <div className='section-center'>
         <h3>
           <Link to='/'>Home</Link>/ <span className='margin-right'></span>
-          {product && <Link to='/products'>Products /</Link>}
+          {product && (
+            <Link to='/products' onClick={clearFilters}>
+              Products /
+            </Link>
+          )}
+          {(product || category !== 'all') && !singleCategory ? (
+            <Link to='/products' onClick={() => updateCategory(category)}>
+              {category} /
+            </Link>
+          ) : (
+            <Link to='/products' onClick={() => updateCategory(singleCategory)}>
+              {singleCategory} /
+            </Link>
+          )}
           {title}
         </h3>
       </div>
@@ -50,14 +70,25 @@ const Wrapper = styled.header`
 
   @media (max-width: 1100px) {
     margin-top: 9rem;
+    padding-left: 2rem;
   }
 
   @media (max-width: 600px) {
-    padding-left: 2rem;
-
     h3 {
       font-size: 2rem;
-      text-transform: capitalize;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding-left: 1rem;
+
+    h3 {
+      font-size: 1.6rem;
+    }
+
+    a,
+    .margin-right {
+      margin-right: 0rem;
     }
   }
 `;

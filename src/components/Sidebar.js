@@ -91,10 +91,12 @@ function Sidebar({ scrollHeight }) {
               )}
             </div>
           </div>
-          <NavLink className='logout' to='/logout'>
-            <IoPersonRemove className='icon' />
-            <span className='linkName'>Logout</span>
-          </NavLink>
+          {currentUser && (
+            <NavLink className='logout' to='/logout'>
+              <IoPersonRemove className='icon' />
+              <span className='linkName'>Logout</span>
+            </NavLink>
+          )}
         </div>
       </div>
     </Wrapper>

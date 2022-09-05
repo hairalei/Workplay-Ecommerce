@@ -65,6 +65,9 @@ const Wrapper = styled.section`
   }
 
   form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     input {
       padding: 1rem;
       border-top-left-radius: 1rem;
@@ -128,20 +131,24 @@ const Wrapper = styled.section`
     width: 100%;
     padding: 6.4rem 1rem;
 
-    form input {
-      width: 100%;
-      height: 4.8rem;
-      border-top-right-radius: 1rem;
-      border-bottom-right-radius: 1rem;
-    }
+    form {
+      flex-direction: column;
 
-    form button {
-      border-top-left-radius: 1rem;
-      border-bottom-left-radius: 1rem;
-      font-size: 1.6rem;
-      width: 100%;
-      height: 3.6rem;
-      margin-top: 1rem;
+      input {
+        width: 100%;
+        height: 4.8rem;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+      }
+
+      button {
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        font-size: 1.6rem;
+        width: 100%;
+        height: 4.8rem;
+        margin-top: 1rem;
+      }
     }
   }
 `;

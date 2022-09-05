@@ -87,7 +87,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 480px) {
     h2 {
       padding: 0 2rem;
       font-size: 2.4rem;
@@ -213,6 +213,14 @@ const Wrapper = styled.section`
     .btnFeatured {
       padding: 1.2rem;
       width: 12rem;
+    }
+
+    .split.right {
+      background-position: 30%;
+    }
+
+    .split.left {
+      background-position: 70%;
     }
   }
 `;
