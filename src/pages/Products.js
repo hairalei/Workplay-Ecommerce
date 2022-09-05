@@ -7,6 +7,7 @@ import {
   Loading,
   Filters,
   Sort,
+  MobileNav,
 } from '../components';
 import { useProductsContext } from '../context/productsContext';
 import { FaFilter } from 'react-icons/fa';

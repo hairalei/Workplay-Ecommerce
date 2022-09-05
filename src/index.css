@@ -156,3 +156,9 @@ body {
     transform: translateX(100%) rotate(45deg);
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 7rem;
+  }
+}

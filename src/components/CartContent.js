@@ -69,7 +69,7 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 600px) {
-    padding: 2rem;
+    padding: 2rem 0;
 
     .link-container {
       flex-direction: column;

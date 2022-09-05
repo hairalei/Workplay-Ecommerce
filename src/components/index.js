@@ -12,6 +12,7 @@ import GridView from './GridView';
 import Hero from './Hero';
 import ListView from './ListView';
 import Loading from './Loading';
+import MobileNav from './MobileNav';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
 import OrderHistory from './OrderHistory';
@@ -39,6 +40,7 @@ export {
   Hero,
   ListView,
   Loading,
+  MobileNav,
   Navbar,
   Newsletter,
   OrderHistory,

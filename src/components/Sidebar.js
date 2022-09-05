@@ -307,34 +307,43 @@ const Wrapper = styled.aside`
   @media (max-width: 900px) {
     .navCircle {
       top: 0.7rem;
-      right: 1rem;
+      right: 3rem;
       width: 6rem;
       height: 6rem;
-
-      .line {
-        height: 0.3rem;
-      }
-
-      .line::before {
-        top: -300%;
-        left: 0%;
-        width: 4rem;
-        height: 0.5rem;
-      }
-
-      .line::after {
-        bottom: -300%;
-        left: 0%;
-        width: 4rem;
-        height: 0.5rem;
-      }
     }
   }
 
   @media (max-width: 400px) {
-    .sidebar {
-      width: 100vw;
+    .navCircle {
+      top: 1.4rem;
+      right: 2rem;
+      width: 4rem;
+      height: 4rem;
+      padding: 0.4rem;
+
+      .line {
+        height: 0.25rem;
+        width: 2rem;
+      }
+
+      .line::before {
+        top: -250%;
+        left: 0%;
+        width: 2rem;
+        height: 0.3rem;
+      }
+
+      .line::after {
+        bottom: -250%;
+        left: 0%;
+        width: 2rem;
+        height: 0.3rem;
+      }
     }
+  }
+
+  .sidebar {
+    width: 100vw;
   }
 `;
 
