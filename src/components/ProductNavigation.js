@@ -22,7 +22,7 @@ function ProductNavigation({ title, product, singleCategory }) {
           )}
           {(product || category !== 'all') && !singleCategory ? (
             <Link to='/products' onClick={() => updateCategory(category)}>
-              {category} /
+              {category !== 'all' ? category + ' /' : ''}
             </Link>
           ) : (
             <Link to='/products' onClick={() => updateCategory(singleCategory)}>
