@@ -7,6 +7,7 @@ import {
   SET_PRODUCTS,
   FETCH_SINGLE_PRODUCT,
   SET_SINGLE_PRODUCT,
+  SET_SCROLL_HEIGHT,
   SHOW_ERROR,
 } from '../utils/actions';
 
@@ -15,6 +16,7 @@ const initialState = {
   singleProduct: {},
   isProductsLoading: false,
   productsError: null,
+  scrollHeight: 0,
 };
 
 const ProductsContext = React.createContext();
@@ -60,10 +62,16 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const setScrollHeight = (height) => {
+    dispatch({ type: SET_SCROLL_HEIGHT, payload: height });
+  };
+
   useEffect(() => fetchProducts(), []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, fetchSingleProduct }}>
+    <ProductsContext.Provider
+      value={{ ...state, fetchSingleProduct, setScrollHeight }}
+    >
       {children}
     </ProductsContext.Provider>
   );

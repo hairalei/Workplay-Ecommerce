@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { formatPrice } from '../utils/helpers';
+import { useProductsContext } from '../context/productsContext';
 
 function Product({ images, name, price, id }) {
+  const { setScrollHeight, scrollHeight } = useProductsContext();
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const scroll = window.addEventListener('scroll', () => {
+      setHeight(window.scrollY);
+    });
+
+    return () => window.removeEventListener('scroll', scroll);
+  }, [height]);
+
   return (
     <Wrapper>
       <div className='container'>
-        <Link to={`/products/${id}`} className='link'>
+        <Link
+          to={`/products/${id}`}
+          className='link'
+          onClick={() => setScrollHeight(height)}
+        >
           <img src={images[0]} alt={name} />
           <img className='imageHover' src={images[1]} alt={name} />
         </Link>
       </div>
       <footer>
-        <Link to={`/products/${id}`} className='link'>
+        <Link
+          to={`/products/${id}`}
+          className='link'
+          onClick={() => setScrollHeight(height)}
+        >
           <h5>{name}</h5>
         </Link>
 

@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import {
   ProductNavigation,
   ProductsList,
-  SingleProduct,
   Loading,
   Filters,
   Sort,
@@ -13,8 +12,13 @@ import { useProductsContext } from '../context/productsContext';
 import { FaFilter } from 'react-icons/fa';
 
 function Products() {
-  const { products, isProductsLoading, productsError } = useProductsContext();
+  const { isProductsLoading, productsError, scrollHeight } =
+    useProductsContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, scrollHeight);
+  }, []);
 
   if (productsError) {
     toast.error('Could not load products. Please try again.');
@@ -31,7 +35,6 @@ function Products() {
             className='filter'
             onClick={() => {
               setIsModalOpen(true);
-              console.log(isModalOpen);
             }}
           >
             <FaFilter />
@@ -42,7 +45,6 @@ function Products() {
               className='close'
               onClick={() => {
                 setIsModalOpen(false);
-                console.log(isModalOpen);
               }}
             >
               X

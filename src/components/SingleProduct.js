@@ -25,7 +25,6 @@ function SingleProduct() {
 
   useEffect(() => {
     fetchSingleProduct(id);
-    console.log('fetching');
   }, [id]);
 
   useEffect(() => {

@@ -11,6 +11,7 @@ export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const FETCH_SINGLE_PRODUCT = 'FETCH_SINGLE_PRODUCT';
 export const SET_SINGLE_PRODUCT = 'SET_SINGLE_PRODUCT';
 export const SHOW_ERROR = 'SHOW_ERROR';
+export const SET_SCROLL_HEIGHT = 'SET_SCROLL_HEIGHT';
 export const DECREASE_STOCK = 'DECREASE_STOCK';
 
 // Filter Context

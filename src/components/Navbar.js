@@ -4,9 +4,14 @@ import { CartButton, AccountButton } from './';
 import styled from 'styled-components';
 import logo from '../assets/workplaylogo.svg';
 import { navLinks } from '../utils/navLinks';
+import { useProductsContext } from '../context/productsContext';
 import Sidebar from './Sidebar';
 
 function Navbar() {
+  const { setScrollHeight } = useProductsContext();
+
+  const scrollOnTop = () => setScrollHeight(0);
+
   return (
     <Wrapper>
       <Link to='/' className='logoDiv'>
@@ -17,15 +22,20 @@ function Navbar() {
       <div className='linksDiv'>
         {navLinks.map((link, idx) => {
           return (
-            <NavLink key={idx} to={link.path} className='navlink'>
+            <NavLink
+              key={idx}
+              to={link.path}
+              className='navlink'
+              onClick={scrollOnTop}
+            >
               <span className='linkName'>{link.name}</span>
             </NavLink>
           );
         })}
 
         <div className='cartAndAuthDiv'>
-          <CartButton />
-          <AccountButton />
+          <CartButton onClick={scrollOnTop} />
+          <AccountButton onClick={scrollOnTop} />
         </div>
       </div>
     </Wrapper>

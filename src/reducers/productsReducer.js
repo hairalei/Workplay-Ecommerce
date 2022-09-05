@@ -3,6 +3,7 @@ import {
   SET_PRODUCTS,
   FETCH_SINGLE_PRODUCT,
   SET_SINGLE_PRODUCT,
+  SET_SCROLL_HEIGHT,
   SHOW_ERROR,
 } from '../utils/actions';
 
@@ -38,6 +39,10 @@ const productsReducer = (state, action) => {
         productsError: action.payload,
         isProductsLoading: false,
       };
+    }
+
+    case SET_SCROLL_HEIGHT: {
+      return { ...state, scrollHeight: action.payload };
     }
   }
 

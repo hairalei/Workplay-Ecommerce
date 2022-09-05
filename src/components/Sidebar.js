@@ -10,10 +10,14 @@ import {
 } from 'react-icons/io5';
 import { navLinks } from '../utils/navLinks';
 import { useUserContext } from '../context/userContext';
+import { useProductsContext } from '../context/productsContext';
 
 function Sidebar({ scrollHeight }) {
   const { currentUser } = useUserContext();
+  const { setScrollHeight } = useProductsContext();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const scrollOnTop = () => setScrollHeight(0);
 
   return (
     <Wrapper>
@@ -28,7 +32,13 @@ function Sidebar({ scrollHeight }) {
       )}
 
       <div className={isSidebarOpen ? 'sidebar show' : 'sidebar'}>
-        <IoClose className='close' onClick={() => setIsSidebarOpen(false)} />
+        <IoClose
+          className='close'
+          onClick={() => {
+            setIsSidebarOpen(false);
+            setScrollHeight(0);
+          }}
+        />
         <div className='linksDiv'>
           {navLinks.map((link, idx) => {
             return (
@@ -36,7 +46,10 @@ function Sidebar({ scrollHeight }) {
                 key={idx}
                 to={link.path}
                 className='navlink links'
-                onClick={() => setIsSidebarOpen(false)}
+                onClick={() => {
+                  setIsSidebarOpen(false);
+                  setScrollHeight(0);
+                }}
               >
                 {link.icon}
                 <span className='linkName'>{link.name}</span>
@@ -45,14 +58,26 @@ function Sidebar({ scrollHeight }) {
           })}
 
           <div className='cartAndAuthDiv'>
-            <div className='cartDiv' onClick={() => setIsSidebarOpen(false)}>
+            <div
+              className='cartDiv'
+              onClick={() => {
+                setIsSidebarOpen(false);
+                setScrollHeight(0);
+              }}
+            >
               <CartButton />
               <NavLink to='/cart' className='linkName cart'>
                 cart
               </NavLink>
             </div>
 
-            <div className='' onClick={() => setIsSidebarOpen(false)}>
+            <div
+              className=''
+              onClick={() => {
+                setIsSidebarOpen(false);
+                setScrollHeight(0);
+              }}
+            >
               {currentUser ? (
                 <NavLink to='/profile'>
                   <IoPerson className='icon' />
