@@ -313,11 +313,21 @@ const Wrapper = styled.aside`
       width: 6rem;
       height: 6rem;
     }
+
+    .sidebar .close {
+      top: 1.8rem;
+      right: 3.8rem;
+    }
   }
 
   @media (max-width: 400px) {
     .sidebar {
       width: 100vw;
+
+      .close {
+        top: 1rem;
+        right: 1.8rem;
+      }
     }
 
     .navCircle {
