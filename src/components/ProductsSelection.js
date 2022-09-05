@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useFilterContext } from '../context/filterContext';
 import { productsImages } from '../utils/imagesData';
 
 function ProductsSelection() {
   const textRef = useRef(null);
   const [isHover, setIsHover] = useState(false);
+  const { updateCategory } = useFilterContext();
 
   return (
     <Wrapper>
@@ -20,6 +22,7 @@ function ProductsSelection() {
                 ref={textRef}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
+                onClick={() => updateCategory(name)}
               >
                 <img src={url} alt={name} />
                 <span>{name}</span>

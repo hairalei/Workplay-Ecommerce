@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { addDoc, doc, collection } from 'firebase/firestore';
+import { db } from '../firebase/firebase.config';
+import { toast } from 'react-toastify';
 
 function Newsletter() {
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await addDoc(collection(db, 'newsletter'), { email });
+    setEmail('');
+    toast.success('Subscribed to newsletter!');
   };
 
   return (
@@ -17,7 +26,12 @@ function Newsletter() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <input type='email' placeholder='Email Address' />
+        <input
+          type='email'
+          placeholder='Email Address'
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
         <button type='submit' onSubmit={handleSubmit}>
           Subscribe
         </button>

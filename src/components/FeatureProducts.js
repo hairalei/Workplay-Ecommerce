@@ -6,6 +6,10 @@ import { featuredConsoles } from '../utils/imagesData';
 function FeatureProducts() {
   const containerRef = useRef(null);
 
+  const scrollOnTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Wrapper>
       <h2>Featured Gaming Consoles</h2>
@@ -19,7 +23,11 @@ function FeatureProducts() {
           }
         >
           <h1>Playstation 5</h1>
-          <Link to='/products' className='btnFeatured'>
+          <Link
+            to='/products/MBRcqMV1FnJK2X6j4oub'
+            className='btnFeatured'
+            onClick={scrollOnTop}
+          >
             Buy Now
           </Link>
         </div>
@@ -31,7 +39,11 @@ function FeatureProducts() {
           }
         >
           <h1>XBox Series X</h1>
-          <Link to='/products' className='btnFeatured'>
+          <Link
+            to='/products/N7cDUkuzbxTnNhHUHHnV'
+            className='btnFeatured'
+            onClick={scrollOnTop}
+          >
             Buy Now
           </Link>
         </div>

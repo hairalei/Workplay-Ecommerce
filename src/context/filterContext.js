@@ -9,6 +9,7 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  UPDATE_CATEGORY,
 } from '../utils/actions';
 import { useProductsContext } from './productsContext';
 
@@ -77,6 +78,11 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
+  const updateCategory = (category) => {
+    window.scrollTo(0, 100);
+    dispatch({ type: UPDATE_CATEGORY, payload: category });
+  };
+
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
   };
@@ -90,6 +96,7 @@ export const FilterProvider = ({ children }) => {
         updateSort,
         updateFilters,
         clearFilters,
+        updateCategory,
       }}
     >
       {children}

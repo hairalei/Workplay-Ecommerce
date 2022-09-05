@@ -8,6 +8,7 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  UPDATE_CATEGORY,
 } from '../utils/actions';
 
 const filterReducer = (state, action) => {
@@ -130,6 +131,13 @@ const filterReducer = (state, action) => {
           price: state.filters.maxPrice,
           shipping: false,
         },
+      };
+    }
+
+    case UPDATE_CATEGORY: {
+      return {
+        ...state,
+        filters: { ...state.filters, category: action.payload },
       };
     }
   }
