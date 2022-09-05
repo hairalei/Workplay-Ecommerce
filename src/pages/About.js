@@ -12,14 +12,15 @@ function About() {
       <div className='aboutDiv'>
         <h1>About Us</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores cum,
-          facilis perspiciatis magnam quisquam ad! Labore accusantium illo fugit
-          praesentium cum reprehenderit incidunt voluptatem, maiores excepturi
-          explicabo aliquam non facere distinctio totam eveniet consequatur.
-          Eveniet iusto eum nam est minima ipsum laborum. Voluptas, ducimus!
-          Blanditiis tempore ex earum voluptatum distinctio. Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Eveniet quaerat dolor nobis
-          veniam culpa aliquam obcaecati velit recusandae molestiae expedita!
+          Founded in 2020 where pandemic started to hit the world. We realized
+          that we all work hard just to die. We often forget to relax and
+          achieve the work-life balance. Life is too short to work all day and
+          die early. Recreation is important in our daily lives and make us live
+          longer. We founded this e-commerce business to help us remember that
+          life is not all about working and earning money. It's also about
+          playing and spending your hard earned money. We have 500+ branches all
+          around the globe and offer deliveries. Let's always remember to WORK
+          hard and PLAY hard!
         </p>
       </div>
     </Wrapper>
