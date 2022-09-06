@@ -111,6 +111,7 @@ function Form() {
         await setDoc(doc(db, 'users', user.uid), {
           displayName: user.displayName,
           email: user.email,
+          uid: user.uid,
         });
         setCurrentUser(user.email);
       }
