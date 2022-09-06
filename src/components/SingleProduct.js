@@ -25,6 +25,7 @@ function SingleProduct() {
 
   useEffect(() => {
     fetchSingleProduct(id);
+    window.scrollTo(0, 0);
   }, [id]);
 
   useEffect(() => {
