@@ -1,6 +1,7 @@
 import AccountButton from './AccountButton';
 import AddToCart from './AddToCart';
 import AmountButtons from './AmountButtons';
+import BackToTop from './BackToTop';
 import CartButton from './CartButton';
 import CartContent from './CartContent';
 import Features from './Features';
@@ -29,6 +30,7 @@ export {
   AddToCart,
   AccountButton,
   AmountButtons,
+  BackToTop,
   CartButton,
   CartContent,
   Features,

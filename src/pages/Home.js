@@ -7,6 +7,7 @@ import {
   ProductsSelection,
   Newsletter,
   Loading,
+  BackToTop,
 } from '../components';
 
 // I just used this to import data to firebase
@@ -55,6 +56,8 @@ function Home() {
         <ProductsSelection />
         <Newsletter />
       </Wrapper>
+
+      <BackToTop />
     </>
   );
 }

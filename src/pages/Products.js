@@ -7,7 +7,7 @@ import {
   Loading,
   Filters,
   Sort,
-  MobileNav,
+  BackToTop,
 } from '../components';
 import { useProductsContext } from '../context/productsContext';
 import { FaFilter } from 'react-icons/fa';
@@ -58,6 +58,8 @@ function Products() {
           </div>
         </div>
       </Wrapper>
+
+      <BackToTop />
     </>
   );
 }
