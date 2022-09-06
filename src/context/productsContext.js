@@ -1,5 +1,12 @@
 import React, { useContext, useReducer, useEffect } from 'react';
-import { collection, onSnapshot, doc, getDoc } from 'firebase/firestore';
+import {
+  collection,
+  onSnapshot,
+  doc,
+  getDoc,
+  updateDoc,
+  increment,
+} from 'firebase/firestore';
 import { db } from '../firebase/firebase.config';
 import reducer from '../reducers/productsReducer';
 import {
@@ -9,6 +16,7 @@ import {
   SET_SINGLE_PRODUCT,
   SET_SCROLL_HEIGHT,
   SHOW_ERROR,
+  DECREASE_STOCK,
 } from '../utils/actions';
 
 const initialState = {
@@ -62,15 +70,30 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const decreaseStock = async (cart) => {
+    cart.forEach(async (item) => {
+      const { id, amount, max } = item;
+      const ref = doc(db, 'products', id.slice(0, 20));
+
+      const newStock = max - amount < 0 ? 0 : max - amount;
+
+      await updateDoc(ref, {
+        stock: newStock,
+      });
+    });
+  };
+
   const setScrollHeight = (height) => {
     dispatch({ type: SET_SCROLL_HEIGHT, payload: height });
   };
 
-  useEffect(() => fetchProducts(), []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <ProductsContext.Provider
-      value={{ ...state, fetchSingleProduct, setScrollHeight }}
+      value={{ ...state, fetchSingleProduct, setScrollHeight, decreaseStock }}
     >
       {children}
     </ProductsContext.Provider>

@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { formatPrice } from '../utils/helpers';
 import { useProductsContext } from '../context/productsContext';
 
-function Product({ images, name, price, id }) {
-  const { setScrollHeight, scrollHeight } = useProductsContext();
+function Product({ images, name, price, id, stock }) {
+  const { setScrollHeight } = useProductsContext();
   const [height, setHeight] = useState(0);
+  const [isOutOfStock, setIsOutOfStock] = useState(true);
 
   useEffect(() => {
     const scroll = window.addEventListener('scroll', () => {
@@ -26,6 +27,9 @@ function Product({ images, name, price, id }) {
         >
           <img src={images[0]} alt={name} />
           <img className='imageHover' src={images[1]} alt={name} />
+          <div className={stock === 0 ? 'outOfStock show' : 'outOfStock'}>
+            <span>soldout</span>
+          </div>
         </Link>
       </div>
       <footer>
@@ -81,6 +85,37 @@ const Wrapper = styled.article`
   .link:hover .imageHover {
     visibility: visible;
     opacity: 1;
+  }
+
+  .outOfStock {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .outOfStock.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--grey-3);
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
   }
 
   footer {

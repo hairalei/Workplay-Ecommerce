@@ -85,7 +85,6 @@ export const UserProvider = ({ children }) => {
           date: moment().format('lll'),
         }),
       });
-      console.log('orderTimestamp');
     } catch (error) {
       console.error(error.message);
     }

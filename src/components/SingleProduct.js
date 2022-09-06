@@ -69,7 +69,7 @@ function SingleProduct() {
                 <span>Available: </span>
                 {stock > 0 ? 'In stock' : 'Out of stock'}
               </p>
-              <p className='info'>
+              <p className='info sku'>
                 <span>SKU: </span>
                 {id}
               </p>
@@ -139,6 +139,10 @@ const Wrapper = styled.main`
     display: grid;
     grid-template-columns: 125px 1fr;
     color: var(--grey-7);
+
+    &.sku {
+      text-transform: none;
+    }
 
     span {
       font-weight: 700;

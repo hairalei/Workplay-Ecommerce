@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react';
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from '@paypal/react-paypal-js';
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { useNavigate } from 'react-router-dom';
 import { useCartContext } from '../context/cartContext';
 import { useUserContext } from '../context/userContext';
+import { useProductsContext } from '../context/productsContext';
 import Loading from './Loading';
 import { toast } from 'react-toastify';
-import { formatPrice } from '../utils/helpers';
 
 const initialOptions = {
   'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID,
@@ -20,6 +16,7 @@ const initialOptions = {
 function PayPalButtonWrapper() {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
   const { addToOrderHistory } = useUserContext();
+  const { decreaseStock } = useProductsContext();
   const { cart, totalProductsPrice, shippingFee, clearCart } = useCartContext();
   const itemsDescription = cart.map((item) => item.name).join(' & ');
   const totalPrice = (totalProductsPrice + shippingFee) / 100;
@@ -62,6 +59,7 @@ function PayPalButtonWrapper() {
               const name = details.payer.name.given_name;
               console.log(data);
               addToOrderHistory(data.orderID, cart, totalPrice);
+              decreaseStock(cart);
               toast.success(
                 `Payment Success! Transaction completed by ${name}`
               );

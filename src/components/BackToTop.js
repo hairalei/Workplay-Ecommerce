@@ -7,7 +7,6 @@ function BackToTop() {
 
   useEffect(() => {
     const scrollEvent = window.addEventListener('scroll', () => {
-      console.log(document.documentElement.scrollHeight, window.scrollY);
       if (window.scrollY >= document.documentElement.scrollHeight - 1500) {
         setIsAtBottom(true);
       } else {

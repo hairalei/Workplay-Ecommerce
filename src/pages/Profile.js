@@ -11,6 +11,7 @@ function Profile() {
 
   useEffect(() => {
     getOrderHistory();
+    window.scrollTo(0, 0);
     console.log(orderHistory);
   }, []);
 
