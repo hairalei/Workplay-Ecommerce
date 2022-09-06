@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { CartButton, AccountButton } from './';
+import { CartButton } from './';
 import {
   IoClose,
   IoPersonAdd,

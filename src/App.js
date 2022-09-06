@@ -33,6 +33,7 @@ function App() {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 
+  // Stick navbar when scrolling when scrollY is greater than 500
   const stickNavbar = () => {
     setInnerWidth(window.innerWidth);
 
@@ -44,6 +45,7 @@ function App() {
     }
   };
 
+  // Show sidebar for  small to medium screens
   useEffect(() => {
     window.addEventListener('resize', stickNavbar);
 

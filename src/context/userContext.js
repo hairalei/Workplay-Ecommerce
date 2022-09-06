@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useReducer } from 'react';
 import {
   SET_CURRENT_USER,
   SET_USER_ID,
-  ADD_TO_ORDER_HISTORY,
   GET_ORDER_HISTORY,
   LOADING,
 } from '../utils/actions';
@@ -11,14 +10,12 @@ import reducer from '../reducers/userReducer';
 import { db } from '../firebase/firebase.config';
 import {
   doc,
-  serverTimestamp,
   updateDoc,
   arrayUnion,
   getDoc,
   collection,
   onSnapshot,
 } from 'firebase/firestore';
-import { toast } from 'react-toastify';
 
 const initialState = {
   currentUser: null,

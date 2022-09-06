@@ -15,9 +15,11 @@ const initialOptions = {
 
 function PayPalButtonWrapper() {
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+
   const { addToOrderHistory } = useUserContext();
   const { decreaseStock } = useProductsContext();
   const { cart, totalProductsPrice, shippingFee, clearCart } = useCartContext();
+
   const itemsDescription = cart.map((item) => item.name).join(' & ');
   const totalPrice = (totalProductsPrice + shippingFee) / 100;
   const navigate = useNavigate('/');

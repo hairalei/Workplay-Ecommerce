@@ -7,7 +7,6 @@ import { useProductsContext } from '../context/productsContext';
 function Product({ images, name, price, id, stock }) {
   const { setScrollHeight } = useProductsContext();
   const [height, setHeight] = useState(0);
-  const [isOutOfStock, setIsOutOfStock] = useState(true);
 
   useEffect(() => {
     const scroll = window.addEventListener('scroll', () => {
