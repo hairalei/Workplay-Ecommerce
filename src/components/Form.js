@@ -95,6 +95,8 @@ function Form() {
 
   const onGoogleClick = async () => {
     setError(null);
+    setIsLoading(true);
+
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
@@ -112,10 +114,12 @@ function Form() {
         });
         setCurrentUser(user.email);
       }
+      setIsLoading(false);
       setCurrentUser(user.email);
       navigate('/');
     } catch (error) {
       toast.error('Could not authorize with Google');
+      setIsLoading(false);
     }
   };
 
