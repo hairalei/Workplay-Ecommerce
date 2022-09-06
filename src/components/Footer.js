@@ -4,7 +4,9 @@ import {
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoTwitter,
+  IoLogoGithub,
 } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const year = new Date().getFullYear();
@@ -42,6 +44,9 @@ function Footer() {
 
       <footer>
         &copy; Workplay eCommerce - <span>{year}</span>. All rights reserved.
+        <a href='https://github.com/hairalei/' target='_blank'>
+          <IoLogoGithub className='gitLogo' />
+        </a>
       </footer>
     </Wrapper>
   );
@@ -92,6 +97,19 @@ const Wrapper = styled.section`
     justify-self: end;
     color: var(--grey-5);
     font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+
+    .gitLogo {
+      font-size: 2rem;
+      color: var(--grey-5);
+    }
+
+    .gitLogo:hover,
+    .gitLogo:active {
+      color: var(--grey-6);
+      animation: github 0.5s infinite ease;
+    }
   }
 
   @media (max-width: 1200px) {
@@ -124,6 +142,10 @@ const Wrapper = styled.section`
       column-gap: 8rem;
       flex-wrap: wrap;
     }
+
+    .gitLogo {
+      font-size: 1.6rem;
+    }
   }
 
   @media (max-width: 450px) {
@@ -135,6 +157,10 @@ const Wrapper = styled.section`
       justify-content: start;
       gap: 3rem;
       flex-wrap: wrap;
+    }
+
+    .gitLogo {
+      font-size: 1.4rem;
     }
   }
 `;

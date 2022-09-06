@@ -157,6 +157,18 @@ body {
   }
 }
 
+@keyframes github {
+  0% {
+    transform: rotate(-15deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(15deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(-15deg) scale(1.2);
+  }
+}
+
 @media (max-width: 768px) {
   body {
     padding-bottom: 7rem;
