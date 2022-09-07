@@ -85,11 +85,11 @@ const Wrapper = styled.section`
   }
   .color-btn {
     display: inline-block;
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 2.4rem;
+    height: 2.4rem;
     border-radius: 50%;
     background: #222;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     border: none;
     cursor: pointer;
     opacity: 0.5;
