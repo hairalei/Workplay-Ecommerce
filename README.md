@@ -10,6 +10,7 @@ I applied what I've learned in React (state, reducer, context, router)
 - Authentication using Firebase (email, gmail)
 - Login, Logout, Signup, and Forgot password feature
 - Real time storage (product stocks) using Firestore
+- Products can be out of stock
 - Cart storage using local storage
 - Has search, filter, sort, and order history of products.
 - View by grid or list
@@ -25,9 +26,13 @@ https://workplay-ecommerce.vercel.app/
 ![workplay](https://i.ibb.co/1MWC5H6/singleproduct.png)
 ![workplay](https://i.ibb.co/x2QGdSK/cart.png)
 ![workplay](https://i.ibb.co/BL8mL97/profile.png)
-![workplay](https://i.ibb.co/1mYRc7z/Workplay-Ecommerce-Home.gif)
-![workplay](https://i.ibb.co/T0j7B6H/Workplay-Ecommerce-Products.gif)
-![workplay](https://i.ibb.co/wLH0rxt/Workplay-Ecommerce-Login.gif)
-![workplay](https://i.ibb.co/M8xb30X/Workplay-Ecommerce-Cart.gif)
+![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Home.gif?raw=true)
+![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Products.gif?raw=true)
+![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Login.gif?raw=true)
+![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Cart.gif?raw=true)
+_It didn't screen capture the popup window of paypal and google auth_
+_It's better if you try the link instead and experience it ;)_
+
+## Mobile preview
 
 <img src='https://i.ibb.co/LR8Tjpd/phone.png' height=300 />
