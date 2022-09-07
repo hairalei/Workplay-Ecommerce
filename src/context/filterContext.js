@@ -59,6 +59,7 @@ export const FilterProvider = ({ children }) => {
   };
 
   const updateFilters = (e) => {
+    window.scrollTo(0, 0);
     let name = e.target.name;
     let value = e.target.value;
 
