@@ -31,6 +31,7 @@ https://workplay-ecommerce.vercel.app/
 ![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Login.gif?raw=true)
 ![workplay](https://github.com/hairalei/WorkplayImagesDB/blob/main/Workplay%20Ecommerce%20-%20Cart.gif?raw=true)
 _It didn't screen capture the popup window of paypal and google auth_
+<br>
 _It's better if you try the link instead and experience it ;)_
 
 ## Mobile preview
