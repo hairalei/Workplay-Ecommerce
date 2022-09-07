@@ -29,8 +29,5 @@ https://workplay-ecommerce.vercel.app/
 ![workplay](https://i.ibb.co/T0j7B6H/Workplay-Ecommerce-Products.gif)
 ![workplay](https://i.ibb.co/wLH0rxt/Workplay-Ecommerce-Login.gif)
 ![workplay](https://i.ibb.co/M8xb30X/Workplay-Ecommerce-Cart.gif)
-_It didn't screen capture the pop up window_
-<br>
-_It's better if you click the link preview ;)_
-<br>
+
 <img src='https://i.ibb.co/LR8Tjpd/phone.png' height=300 />
