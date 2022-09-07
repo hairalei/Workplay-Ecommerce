@@ -35,18 +35,24 @@ function App() {
 
   // Stick navbar when scrolling when scrollY is greater than 500
   const stickNavbar = () => {
-    setInnerWidth(window.innerWidth);
-
     if (window !== undefined) {
       let windowHeight = window.scrollY;
 
-      windowHeight > 500 ? setShowSidebar(true) : setShowSidebar(false);
+      if (windowHeight >= 500 && innerWidth >= 900) {
+        setShowSidebar(true);
+      }
+
+      if (windowHeight < 500 && innerWidth >= 900) {
+        setShowSidebar(false);
+      }
+
       setScrollHeight(windowHeight);
     }
   };
 
   // Show sidebar for  small to medium screens
   useEffect(() => {
+    setInnerWidth(window.innerWidth);
     window.addEventListener('resize', stickNavbar);
 
     if (window.innerWidth <= 900) setShowSidebar(true);

@@ -301,12 +301,20 @@ const Wrapper = styled.aside`
   }
 
   .logout {
-    position: absolute;
-    bottom: 4rem;
+    margin-top: 10rem;
     color: var(--red-2);
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   @media (max-width: 900px) {
+    .sidebar {
+      width: 50vw;
+    }
+
     .navCircle {
       top: 0.7rem;
       right: 3rem;
@@ -320,7 +328,7 @@ const Wrapper = styled.aside`
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     .sidebar {
       width: 100vw;
 
@@ -331,28 +339,28 @@ const Wrapper = styled.aside`
     }
 
     .navCircle {
-      top: 1.4rem;
+      top: 1rem;
       right: 2rem;
-      width: 4rem;
-      height: 4rem;
+      width: 5rem;
+      height: 5rem;
       padding: 0.4rem;
 
       .line {
         height: 0.25rem;
-        width: 2rem;
+        width: 3rem;
       }
 
       .line::before {
         top: -250%;
         left: 0%;
-        width: 2rem;
+        width: 3rem;
         height: 0.3rem;
       }
 
       .line::after {
         bottom: -250%;
         left: 0%;
-        width: 2rem;
+        width: 3rem;
         height: 0.3rem;
       }
     }

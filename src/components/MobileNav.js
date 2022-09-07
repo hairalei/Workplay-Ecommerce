@@ -90,7 +90,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     display: block;
     width: 100vw;
   }

@@ -208,9 +208,9 @@ function Form() {
 }
 
 const Wrapper = styled.main`
-  padding: 5rem 0;
+  padding: 7rem 0;
   height: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   max-height: 150vh;
   background-color: var(--purple-5);
 
