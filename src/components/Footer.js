@@ -139,6 +139,8 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 630px) {
+    font-size: 1.2rem;
+
     .container {
       display: flex;
       align-items: start;
@@ -153,6 +155,7 @@ const Wrapper = styled.section`
   }
 
   @media (max-width: 480px) {
+    font-size: 1rem;
     padding: 5rem 1rem;
 
     .container {
