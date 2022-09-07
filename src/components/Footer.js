@@ -132,6 +132,10 @@ const Wrapper = styled.section`
       gap: 6rem;
       flex-wrap: wrap;
     }
+
+    footer {
+      padding-bottom: 8rem;
+    }
   }
 
   @media (max-width: 630px) {
@@ -148,7 +152,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 480px) {
     padding: 5rem 1rem;
 
     .container {
@@ -157,6 +161,10 @@ const Wrapper = styled.section`
       justify-content: start;
       gap: 3rem;
       flex-wrap: wrap;
+    }
+
+    footer {
+      padding-bottom: 1rem;
     }
 
     .gitLogo {
