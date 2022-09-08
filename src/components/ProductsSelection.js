@@ -19,7 +19,7 @@ function ProductsSelection() {
             <Link to='/products' key={idx}>
               <div
                 className={
-                  isHover || window.innerWidth <= '768'
+                  isHover || window.innerWidth <= '900'
                     ? 'imageBox show'
                     : 'imageBox'
                 }
