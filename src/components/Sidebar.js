@@ -94,7 +94,14 @@ function Sidebar({ scrollHeight }) {
             </div>
           </div>
           {currentUser && (
-            <NavLink className='logout' to='/logout'>
+            <NavLink
+              className='logout'
+              to='/logout'
+              onClick={() => {
+                setIsSidebarOpen(false);
+                scrollOnTop();
+              }}
+            >
               <IoPersonRemove className='icon' />
               <span className='linkName'>Logout</span>
             </NavLink>
