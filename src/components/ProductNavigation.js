@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useFilterContext } from '../context/filterContext';
+import { useProductsContext } from '../context/productsContext';
 
 function ProductNavigation({ title, product, singleCategory }) {
   const {
@@ -9,6 +10,12 @@ function ProductNavigation({ title, product, singleCategory }) {
     clearFilters,
     filters: { category },
   } = useFilterContext();
+  const { setScrollHeight } = useProductsContext();
+
+  const scrollOnTop = () => {
+    setScrollHeight(0);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Wrapper>
@@ -21,11 +28,23 @@ function ProductNavigation({ title, product, singleCategory }) {
             </Link>
           )}
           {(product || category !== 'all') && !singleCategory ? (
-            <Link to='/products' onClick={() => updateCategory(category)}>
+            <Link
+              to='/products'
+              onClick={() => {
+                scrollOnTop();
+                updateCategory(category);
+              }}
+            >
               {category !== 'all' ? category + ' /' : ''}
             </Link>
           ) : (
-            <Link to='/products' onClick={() => updateCategory(singleCategory)}>
+            <Link
+              to='/products'
+              onClick={() => {
+                scrollOnTop();
+                updateCategory(singleCategory);
+              }}
+            >
               {singleCategory && singleCategory + ' /'}
             </Link>
           )}
