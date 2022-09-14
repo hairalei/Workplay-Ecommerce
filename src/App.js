@@ -27,11 +27,20 @@ import { UserProvider } from './context/userContext';
 import { ProductsProvider } from './context/productsContext';
 import { CartProvider } from './context/cartContext';
 import { FilterProvider } from './context/filterContext';
+import { useUserContext } from './context/userContext';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  const { setCurrentUser } = useUserContext();
+
+  useEffect(() => {
+    setCurrentUser(
+      JSON.parse(window.localStorage.getItem('workplayUser')) || null
+    );
+  }, []);
 
   // Stick navbar when scrolling when scrollY is greater than 500
   const stickNavbar = () => {
@@ -66,51 +75,49 @@ function App() {
 
   return (
     <>
-      <UserProvider>
-        <ProductsProvider>
-          <FilterProvider>
-            <CartProvider>
-              <BrowserRouter>
-                <Navbar />
-                {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <BrowserRouter>
+              <Navbar />
+              {showSidebar && <Sidebar scrollHeight={scrollHeight} />}
 
-                <Routes>
-                  <Route path='/' element={<Home />} />
-                  <Route path='/about' element={<About />} />
-                  <Route path='/products' element={<Products />} />
-                  <Route
-                    path='/profile'
-                    element={
-                      <PrivateRoute>
-                        <Profile />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route path='/products/:id' element={<SingleProduct />} />
-                  <Route path='/cart' element={<Cart />} />
-                  <Route
-                    path='/checkout'
-                    element={
-                      <PrivateRoute>
-                        <Checkout />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route path='*' element={<Error />} />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/products' element={<Products />} />
+                <Route
+                  path='/profile'
+                  element={
+                    <PrivateRoute>
+                      <Profile />
+                    </PrivateRoute>
+                  }
+                />
+                <Route path='/products/:id' element={<SingleProduct />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route
+                  path='/checkout'
+                  element={
+                    <PrivateRoute>
+                      <Checkout />
+                    </PrivateRoute>
+                  }
+                />
+                <Route path='*' element={<Error />} />
 
-                  <Route path='/login' element={<LogIn />} />
-                  <Route path='/logout' element={<LogOut />} />
-                  <Route path='/signup' element={<SignUp />} />
-                  <Route path='/forgot-password' element={<ForgotPassword />} />
-                </Routes>
+                <Route path='/login' element={<LogIn />} />
+                <Route path='/logout' element={<LogOut />} />
+                <Route path='/signup' element={<SignUp />} />
+                <Route path='/forgot-password' element={<ForgotPassword />} />
+              </Routes>
 
-                <Footer />
-                <MobileNav />
-              </BrowserRouter>
-            </CartProvider>
-          </FilterProvider>
-        </ProductsProvider>
-      </UserProvider>
+              <Footer />
+              <MobileNav />
+            </BrowserRouter>
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
 
       <ToastContainer
         position='bottom-right'

@@ -61,6 +61,7 @@ function Form() {
       await setDoc(doc(db, 'users', user.uid), formDataCopy);
 
       setCurrentUser(email);
+      window.localStorage.setItem('workplayUser', JSON.stringify(email));
       toast.success('Success! Email created.');
       setIsLoading(false);
       navigate('/');
@@ -84,6 +85,7 @@ function Form() {
 
       if (userCredential.user) {
         setCurrentUser(email);
+        window.localStorage.setItem('workplayUser', JSON.stringify(email));
         setIsLoading(false);
         navigate('/');
       }
@@ -114,9 +116,11 @@ function Form() {
           uid: user.uid,
         });
         setCurrentUser(user.email);
+        window.localStorage.setItem('workplayUser', JSON.stringify(user.email));
       }
       setIsLoading(false);
       setCurrentUser(user.email);
+      window.localStorage.setItem('workplayUser', JSON.stringify(user.email));
       navigate('/');
     } catch (error) {
       toast.error('Could not authorize with Google');

@@ -9,6 +9,7 @@ import {
   Loading,
   BackToTop,
 } from '../components';
+import { useUserContext } from '../context/userContext';
 
 // I just used this to import data to firebase
 // import { singleProduct } from '../utils/testData';
@@ -17,6 +18,13 @@ import {
 
 function Home() {
   const [isLoading, setIsLoading] = useState(false);
+  // const { setCurrentUser } = useUserContext();
+
+  // useEffect(() => {
+  //   setCurrentUser(
+  //     JSON.parse(window.localStorage.getItem('workplayUser')) || null
+  //   );
+  // }, []);
 
   // IGNORE THIS CODE --- for reference only
   // I just used this to import data to firebase

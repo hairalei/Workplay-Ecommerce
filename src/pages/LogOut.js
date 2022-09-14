@@ -15,6 +15,7 @@ function LogOut() {
     try {
       await signOut(auth);
       setCurrentUser(null);
+      window.localStorage.setItem('workplayUser', JSON.stringify(null));
     } catch (error) {
       alert(error.message);
       setIsLoading(false);
